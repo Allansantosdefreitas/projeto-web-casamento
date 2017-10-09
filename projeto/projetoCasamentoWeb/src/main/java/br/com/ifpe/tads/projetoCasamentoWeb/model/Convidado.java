@@ -1,40 +1,55 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the convidado database table.
+ * 
+ */
 @Entity
-@Table(name = "tb_convidado")
 @DiscriminatorValue(value = "con")
-@PrimaryKeyJoinColumn(name = "id_convidado", referencedColumnName = "id_usuario")
-@Access(AccessType.FIELD)
-public class Convidado implements Serializable{
-
-	/**
-	 * 
-	 */
+@PrimaryKeyJoinColumn(name = "idUsuarioProfissional", referencedColumnName = "idUsuario")
+@NamedQuery(name="Convidado.findAll", query="SELECT c FROM Convidado c")
+public class Convidado extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	private int idUsuarioProfissional;
+
 	private StatusConvidado statusConvidado;
-	
-	public String responderConvite() {
-		String mensagem = "Convite respondido com sucesso";
-		
-		return mensagem;
+
+	//bi-directional many-to-one association to Casamento
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Casamento casamento;
+
+	public Convidado() {
 	}
 
+//	public int getIdUsuarioProfissional() {
+//		return this.idUsuarioProfissional;
+//	}
+//
+//	public void setIdUsuarioProfissional(int idUsuarioProfissional) {
+//		this.idUsuarioProfissional = idUsuarioProfissional;
+//	}
+
 	public StatusConvidado getStatusConvidado() {
-		return statusConvidado;
+		return this.statusConvidado;
 	}
 
 	public void setStatusConvidado(StatusConvidado statusConvidado) {
 		this.statusConvidado = statusConvidado;
 	}
-	
+
+	public Casamento getCasamento() {
+		return this.casamento;
+	}
+
+	public void setCasamento(Casamento casamento) {
+		this.casamento = casamento;
+	}
+
 }

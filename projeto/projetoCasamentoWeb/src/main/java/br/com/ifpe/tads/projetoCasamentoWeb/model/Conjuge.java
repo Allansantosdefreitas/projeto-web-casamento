@@ -1,24 +1,45 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the conjuge database table.
+ * 
+ */
 @Entity
-@Table(name = "tb_conjuge")
 @DiscriminatorValue(value = "con")
-@PrimaryKeyJoinColumn(name = "id_conjuge", referencedColumnName = "id_usuario")
-@Access(AccessType.FIELD)
-public class Conjuge implements Serializable{
-
-	/**
-	 * 
-	 */
+@PrimaryKeyJoinColumn(name = "idUsuarioProfissional", referencedColumnName = "idUsuario")
+@NamedQuery(name="Conjuge.findAll", query="SELECT c FROM Conjuge c")
+public class Conjuge extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	private int idUsuarioProfissional;
+
+	//bi-directional many-to-one association to Casamento
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Casamento casamento;
+
+	public Conjuge() {
+	}
+
+//	public int getIdUsuarioProfissional() {
+//		return this.idUsuarioProfissional;
+//	}
+//
+//	public void setIdUsuarioProfissional(int idUsuarioProfissional) {
+//		this.idUsuarioProfissional = idUsuarioProfissional;
+//	}
+
+	public Casamento getCasamento() {
+		return this.casamento;
+	}
+
+	public void setCasamento(Casamento casamento) {
+		this.casamento = casamento;
+	}
 
 }

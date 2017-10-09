@@ -1,102 +1,111 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the servico database table.
+ * 
+ */
 @Entity
-@Table (name = "tb_servico")
-public class Servico implements Serializable{
-
-	/**
-	 * 
-	 */
+@NamedQuery(name="Servico.findAll", query="SELECT s FROM Servico s")
+public class Servico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "id_servico")
-	private Integer idServico;
-	
-	@Column (name = "txt_titulo")
-	private String titulo;
-	
-	@Column (name = "txt_descricao")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idServico;
+
 	private String descricao;
-	
-	@Column (name = "flo_preco")
-	private Float preco;
-	
-	@Column (name = "boo_disponibilizado")
-	private Boolean disponibilizado;
-	
+
+	private float preco;
+
+	private Boolean statusDisponibilizado;
+
+	private String titulo;
+
+	//bi-directional many-to-one association to Profissional
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="Profissional_idUsuarioProfissional")
+	private Profissional profissional;
+
+	//bi-directional many-to-one association to Tarefa
+	@OneToMany(mappedBy="servico")
+	private List<Tarefa> tarefas;
+
 	public Servico() {
-		
 	}
 
-	public Servico(String titulo, String descricao, Float preco, Boolean disponibilizado) {
-		super();
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.preco = preco;
-		this.disponibilizado = disponibilizado;
+	public int getIdServico() {
+		return this.idServico;
 	}
 
-	public Integer getIdServico() {
-		return idServico;
-	}
-
-	public void setIdServico(Integer idServico) {
+	public void setIdServico(int idServico) {
 		this.idServico = idServico;
 	}
 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	public Float getPreco() {
-		return preco;
+	public float getPreco() {
+		return this.preco;
 	}
 
-	public void setPreco(Float preco) {
+	public void setPreco(float preco) {
 		this.preco = preco;
 	}
 
-	public Boolean getDisponibilizado() {
-		return disponibilizado;
+	public Boolean getStatusDisponibilizado() {
+		return this.statusDisponibilizado;
 	}
 
-	public void setDisponibilizado(Boolean disponibilizado) {
-		this.disponibilizado = disponibilizado;
+	public void setStatusDisponibilizado(Boolean statusDisponibilizado) {
+		this.statusDisponibilizado = statusDisponibilizado;
 	}
-	
-	public void disponibilizarServico() {
-		
-		if(this.disponibilizado = Boolean.TRUE) {
-			this.disponibilizado = Boolean.FALSE;
-		} else {
-			this.disponibilizado = Boolean.TRUE;
-		}
+
+	public String getTitulo() {
+		return this.titulo;
 	}
-	
-	public void gerenciarServico() {
-		
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
+
+	public Profissional getProfissional() {
+		return this.profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
+	public List<Tarefa> getTarefas() {
+		return this.tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
+
+	public Tarefa addTarefa(Tarefa tarefa) {
+		getTarefas().add(tarefa);
+		tarefa.setServico(this);
+
+		return tarefa;
+	}
+
+	public Tarefa removeTarefa(Tarefa tarefa) {
+		getTarefas().remove(tarefa);
+		tarefa.setServico(null);
+
+		return tarefa;
+	}
+
 }

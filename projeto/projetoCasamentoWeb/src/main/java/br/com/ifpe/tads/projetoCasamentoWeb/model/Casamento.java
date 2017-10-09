@@ -1,72 +1,128 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
+/**
+ * The persistent class for the casamento database table.
+ * 
+ */
 @Entity
-@Table (name = "tb_casamento")
-public class Casamento implements Serializable{
-
-	/**
-	 * 
-	 */
+@NamedQuery(name="Casamento.findAll", query="SELECT c FROM Casamento c")
+public class Casamento implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue ( strategy = GenerationType.IDENTITY)
-	@Column (name = "id_casamento")
-	private Integer idCasamento;
-	
-	@NotNull
-	@Column (name = "dou_orcamento_Total")
-	private Double orcamentoTotal;
-	
-	@OneToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name="id_casamento", referencedColumnName="fk_casamento")
-	private Convite convite;
-	
-	@OneToMany(mappedBy="casamento", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idCasamento;
+
+	private double orcamentoTotal;
+
+	//bi-directional many-to-one association to Conjuge
+	@OneToMany(mappedBy="casamento")
+	private List<Conjuge> conjuges;
+
+	//bi-directional many-to-one association to Convidado
+	@OneToMany(mappedBy="casamento")
+	private List<Convidado> convidados;
+
+	//bi-directional many-to-one association to Tarefa
+	@OneToMany(mappedBy="casamento")
 	private List<Tarefa> tarefas;
 
-	public Casamento () {
-		
-	}
-	
-	public Casamento(Double orcamentoTotal) {
-		this.orcamentoTotal = orcamentoTotal;
+	//bi-directional one-to-one association to Convite
+	@OneToOne(mappedBy="casamento", cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
+	private Convite convite;
+
+	public Casamento() {
 	}
 
-	public Integer getIdCasamento() {
-		return idCasamento;
+	public int getIdCasamento() {
+		return this.idCasamento;
 	}
 
-	public void setIdCasamento(Integer idCasamento) {
+	public void setIdCasamento(int idCasamento) {
 		this.idCasamento = idCasamento;
 	}
 
-	public Double getOrcamentoTotal() {
-		return orcamentoTotal;
+	public double getOrcamentoTotal() {
+		return this.orcamentoTotal;
 	}
 
-	public void setOrcamentoTotal(Double orcamentoTotal) {
+	public void setOrcamentoTotal(double orcamentoTotal) {
 		this.orcamentoTotal = orcamentoTotal;
 	}
 
+	public List<Conjuge> getConjuges() {
+		return this.conjuges;
+	}
+
+	public void setConjuges(List<Conjuge> conjuges) {
+		this.conjuges = conjuges;
+	}
+
+	public Conjuge addConjuge(Conjuge conjuge) {
+		getConjuges().add(conjuge);
+		conjuge.setCasamento(this);
+
+		return conjuge;
+	}
+
+	public Conjuge removeConjuge(Conjuge conjuge) {
+		getConjuges().remove(conjuge);
+		conjuge.setCasamento(null);
+
+		return conjuge;
+	}
+
+	public List<Convidado> getConvidados() {
+		return this.convidados;
+	}
+
+	public void setConvidados(List<Convidado> convidados) {
+		this.convidados = convidados;
+	}
+
+	public Convidado addConvidado(Convidado convidado) {
+		getConvidados().add(convidado);
+		convidado.setCasamento(this);
+
+		return convidado;
+	}
+
+	public Convidado removeConvidado(Convidado convidado) {
+		getConvidados().remove(convidado);
+		convidado.setCasamento(null);
+
+		return convidado;
+	}
+
+	public List<Tarefa> getTarefas() {
+		return this.tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
+
+	public Tarefa addTarefa(Tarefa tarefa) {
+		getTarefas().add(tarefa);
+		tarefa.setCasamento(this);
+
+		return tarefa;
+	}
+
+	public Tarefa removeTarefa(Tarefa tarefa) {
+		getTarefas().remove(tarefa);
+		tarefa.setCasamento(null);
+
+		return tarefa;
+	}
+
 	public Convite getConvite() {
-		return convite;
+		return this.convite;
 	}
 
 	public void setConvite(Convite convite) {

@@ -1,77 +1,63 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
-import java.util.List;
+import java.io.Serializable;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the convite database table.
+ * 
+ */
 @Entity
-@Table (name = "tb_convite")
-public class Convite {
+@NamedQuery(name="Convite.findAll", query="SELECT c FROM Convite c")
+public class Convite implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "id_convite")
-	private Integer idConvite;
-	
-	@Column (name = "txt_titulo")
-	private String titulo;
-	
-	@Column (name = "txt_mensagem")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idConvite;
+
+	private String destinatarios;
+
 	private String mensagem;
-	
-	@Column (name = "txt_titulo")
-	private List<String> destinatarios;
-	
-	@Column(name="fk_casamento")
-	private Integer fkCasamento;
-	
+
+	//bi-directional one-to-one association to Casamento
+	@OneToOne(cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
+	private Casamento casamento;
+
 	public Convite() {
-		
 	}
 
-	public Integer getIdConvite() {
-		return idConvite;
+	public int getIdConvite() {
+		return this.idConvite;
 	}
 
-	public void setIdConvite(Integer idConvite) {
+	public void setIdConvite(int idConvite) {
 		this.idConvite = idConvite;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getDestinatarios() {
+		return this.destinatarios;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setDestinatarios(String destinatarios) {
+		this.destinatarios = destinatarios;
 	}
 
 	public String getMensagem() {
-		return mensagem;
+		return this.mensagem;
 	}
 
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
 
-	public List<String> getDestinatarios() {
-		return destinatarios;
+	public Casamento getCasamento() {
+		return this.casamento;
 	}
 
-	public void setDestinatarios(List<String> destinatarios) {
-		this.destinatarios = destinatarios;
+	public void setCasamento(Casamento casamento) {
+		this.casamento = casamento;
 	}
 
-	public Integer getFkCasamento() {
-		return fkCasamento;
-	}
-
-	public void setFkCasamento(Integer fkCasamento) {
-		this.fkCasamento = fkCasamento;
-	}
-	
 }

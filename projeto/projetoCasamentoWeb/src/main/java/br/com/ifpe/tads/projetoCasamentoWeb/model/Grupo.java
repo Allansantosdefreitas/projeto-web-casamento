@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_grupo")
+@Table(name = "grupo")
 public class Grupo implements Serializable{
 
 	public static final String CONJUGE = "conjuge";
@@ -31,7 +31,7 @@ public class Grupo implements Serializable{
 
 	@NotBlank
 	@Size(max = 60)
-	@Column(name = "str_nome")
+	@Column(name = "nome")
 	private String strNome;
 
 	public Grupo() {
