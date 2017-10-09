@@ -20,7 +20,7 @@ public class Conjuge extends Usuario implements Serializable {
 //	private int idUsuarioProfissional;
 
 	//bi-directional many-to-one association to Casamento
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Casamento casamento;
 
 	public Conjuge() {

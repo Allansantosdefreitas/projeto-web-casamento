@@ -2,7 +2,6 @@ package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +17,6 @@ import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
 public class DeletarCasamentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB
-	CasamentoRepository casamentoRepository;
-
     /**
      * Default constructor. 
      */
@@ -43,10 +39,12 @@ public class DeletarCasamentoServlet extends HttpServlet {
 		
 		HttpSession sessao = request.getSession();
 		
+		CasamentoRepository casamentoRepository = new CasamentoRepository();
+		
 		Integer idCasamento = Integer.getInteger( (String) sessao.getAttribute("idCasamento"));
 		
-		Casamento casamento = casamentoRepository.getOne(idCasamento);
-		casamentoRepository.delete(casamento);
+		Casamento casamento = casamentoRepository.buscar(idCasamento);
+		casamentoRepository.deletar(casamento);
 		
 	}
 

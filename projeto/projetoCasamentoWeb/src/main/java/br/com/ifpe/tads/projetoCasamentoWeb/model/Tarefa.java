@@ -28,11 +28,11 @@ public class Tarefa implements Serializable {
 	private String titulo;
 
 	//bi-directional many-to-one association to Casamento
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Casamento casamento;
 
 	//bi-directional many-to-one association to Servico
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Servico servico;
 
 	public Tarefa() {

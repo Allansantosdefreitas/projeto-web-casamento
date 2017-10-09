@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +21,6 @@ import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
  */
 public class CadastrarCasamentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@EJB
-	CasamentoRepository casamentoRepository;
 	
 	/**
 	 * Default constructor.
@@ -50,20 +46,52 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		double orcamentoTotal = Double.parseDouble(request.getParameter("orcamento"));
+		double orcamentoTotal = Double.valueOf(request.getParameter("orcamentoTotal"));
+		
+		//Instanciando o casamento
+		Casamento casamento = new Casamento();
+		
+		//Instantciando o noivo e a noiva
+		Conjuge noivo = new Conjuge();
+		noivo.setCasamento(casamento);
+		noivo.setEmail( request.getParameter("emailNoivo") );
+		noivo.setLogin( request.getParameter("loginNoivo") );
+		noivo.setNome( request.getParameter("nomeNoivo") );
+		noivo.setSenha( request.getParameter("senhaNoivo") );
+		
+		Conjuge noiva = new Conjuge();
+		noiva.setCasamento(casamento);
+		noiva.setEmail( request.getParameter("emailNoiva") );
+		noiva.setLogin( request.getParameter("loginNoiva") );
+		noiva.setNome( request.getParameter("nomeNoiva") );
+		noiva.setSenha( request.getParameter("senhaNoiva") );
+		
+		//Adicionando o noivo e a noiva no casamento
 		List<Conjuge> conjuges = new ArrayList<Conjuge>();
+		conjuges.add(noivo);
+		conjuges.add(noiva);
+		
+		//Outros atributos necessários para casamento
 		List<Convidado> convidados = new ArrayList<Convidado>();
 		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 		Convite convite = new Convite();
+		convite.setCasamento(casamento);
 		
-		Casamento casamento = new Casamento();
+		//Atribuindo valores para o casamento
 		casamento.setConjuges(conjuges);
 		casamento.setConvidados(convidados);
 		casamento.setTarefas(tarefas);
-		casamento.setConvite(convite);
+//		casamento.setConvite(convite);
 		casamento.setOrcamentoTotal(orcamentoTotal);
 		
-		casamentoRepository.save(casamento);
+		CasamentoRepository casamentoRepository = new CasamentoRepository();
+		casamentoRepository.inserir(casamento);
+		
+		request.getRequestDispatcher("cadastrarCasamento.jsp").forward(request, response);
+		
+//		ConjugeRepository conjugeRepository = new ConjugeRepository();
+//		conjugeRepository.inserir(noivo);
+//		conjugeRepository.inserir(noiva);
 	}
 
 }

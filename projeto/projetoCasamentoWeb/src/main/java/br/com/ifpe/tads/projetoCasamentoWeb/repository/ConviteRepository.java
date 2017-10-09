@@ -1,9 +1,10 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Convite;
 
-public interface ConviteRepository extends JpaRepository<Convite, Integer>{
+public class ConviteRepository extends Repository<Convite>{
 
+	public ConviteRepository() {
+		super(Convite.class);
+	}
 }

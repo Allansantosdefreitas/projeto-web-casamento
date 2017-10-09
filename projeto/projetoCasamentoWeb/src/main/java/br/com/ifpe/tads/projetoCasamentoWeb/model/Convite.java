@@ -22,7 +22,7 @@ public class Convite implements Serializable {
 	private String mensagem;
 
 	//bi-directional one-to-one association to Casamento
-	@OneToOne(cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
+	@OneToOne(cascade={CascadeType.PERSIST})
 	private Casamento casamento;
 
 	public Convite() {

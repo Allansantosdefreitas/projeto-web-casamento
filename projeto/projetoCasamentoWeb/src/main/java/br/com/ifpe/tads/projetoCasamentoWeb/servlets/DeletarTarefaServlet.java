@@ -2,7 +2,6 @@ package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +16,6 @@ import br.com.ifpe.tads.projetoCasamentoWeb.repository.TarefaRepository;
 public class DeletarTarefaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
-	TarefaRepository tarefaRepository;
-	
     /**
      * Default constructor. 
      */
@@ -40,10 +36,12 @@ public class DeletarTarefaServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		TarefaRepository tarefaRepository = new TarefaRepository();
+		
 		Integer idTarefa = Integer.getInteger((String) request.getParameter("idTarefa") );;
 		
-		Tarefa tarefa = tarefaRepository.getOne(idTarefa);
-		tarefaRepository.delete(tarefa);
+		Tarefa tarefa = tarefaRepository.buscar(idTarefa);
+		tarefaRepository.deletar(tarefa);
 	}
 
 }

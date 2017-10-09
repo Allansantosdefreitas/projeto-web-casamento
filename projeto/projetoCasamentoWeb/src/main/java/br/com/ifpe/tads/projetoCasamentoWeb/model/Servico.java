@@ -27,7 +27,7 @@ public class Servico implements Serializable {
 	private String titulo;
 
 	//bi-directional many-to-one association to Profissional
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="Profissional_idUsuarioProfissional")
 	private Profissional profissional;
 

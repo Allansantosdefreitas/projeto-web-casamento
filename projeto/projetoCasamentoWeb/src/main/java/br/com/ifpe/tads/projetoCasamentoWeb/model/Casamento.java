@@ -21,7 +21,7 @@ public class Casamento implements Serializable {
 	private double orcamentoTotal;
 
 	//bi-directional many-to-one association to Conjuge
-	@OneToMany(mappedBy="casamento")
+	@OneToMany(mappedBy="casamento", cascade = CascadeType.PERSIST)
 	private List<Conjuge> conjuges;
 
 	//bi-directional many-to-one association to Convidado
@@ -33,7 +33,7 @@ public class Casamento implements Serializable {
 	private List<Tarefa> tarefas;
 
 	//bi-directional one-to-one association to Convite
-	@OneToOne(mappedBy="casamento", cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
+	@OneToOne(mappedBy="casamento", cascade={CascadeType.PERSIST})
 	private Convite convite;
 
 	public Casamento() {

@@ -2,7 +2,6 @@ package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +15,6 @@ import br.com.ifpe.tads.projetoCasamentoWeb.repository.ServicoRepository;
  */
 public class DeletarServicoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@EJB
-	ServicoRepository servicoRepository;
 
 	/**
 	 * Default constructor.
@@ -42,10 +38,12 @@ public class DeletarServicoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		ServicoRepository servicoRepository = new ServicoRepository();
+		
 		Integer idServico = Integer.getInteger((String) request.getParameter("idServico"));
-		Servico servico = servicoRepository.getOne(idServico);
+		Servico servico = servicoRepository.buscar(idServico);
 
-		servicoRepository.delete(servico);
+		servicoRepository.deletar(servico);
 	}
 
 }

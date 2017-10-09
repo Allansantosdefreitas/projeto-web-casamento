@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +22,6 @@ import br.com.ifpe.tads.projetoCasamentoWeb.repository.TarefaRepository;
  */
 public class CadastrarTarefaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	@EJB
-	TarefaRepository tarefaRepository;
-	
-	@EJB
-	CasamentoRepository casamentoRepository;
 
 	/**
 	 * Default constructor.
@@ -56,13 +49,16 @@ public class CadastrarTarefaServlet extends HttpServlet {
 
 		HttpSession sessao = request.getSession();
 		
+		TarefaRepository tarefaRepository = new TarefaRepository();
+		CasamentoRepository casamentoRepository = new CasamentoRepository();
+		
 		Integer idCasamento = Integer.getInteger((String) sessao.getAttribute("idCasamento") );
 
 		String descricao = request.getParameter("descricao");
 //		StatusTarefa status = (StatusTarefa) request.getParameter("status");
 		StatusTarefa status = StatusTarefa.PENDENTE;
 		String titulo = request.getParameter("titulo");
-		Casamento casamento = casamentoRepository.getOne(idCasamento);;
+		Casamento casamento = casamentoRepository.buscar(idCasamento);;
 		Servico servico = new Servico();
 		
 		Tarefa tarefa = new Tarefa();
@@ -73,7 +69,7 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		tarefa.setStatus(status);
 		tarefa.setTitulo(titulo);
 		
-		tarefaRepository.save(tarefa);
+		tarefaRepository.inserir(tarefa);
 	}
 
 }

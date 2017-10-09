@@ -22,7 +22,7 @@ public class Convidado extends Usuario implements Serializable {
 	private StatusConvidado statusConvidado;
 
 	//bi-directional many-to-one association to Casamento
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Casamento casamento;
 
 	public Convidado() {
