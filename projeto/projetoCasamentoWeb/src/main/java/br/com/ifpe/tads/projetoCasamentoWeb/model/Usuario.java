@@ -22,15 +22,17 @@ public class Usuario implements Serializable {
 	@Column(name="disc_usuario")
 	private String discUsuario;
 
+	@Column (unique = true)
 	private String email;
 
+	@Column (unique = true)
 	private String login;
 
 	private String nome;
 
 	private String senha;
 	
-	private String salt;
+//	private String salt;
 
 	public Usuario() {
 	}
@@ -83,11 +85,11 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
+//	public String getSalt() {
+//		return salt;
+//	}
+//
+//	public void setSalt(String salt) {
+//		this.salt = salt;
+//	}
 }

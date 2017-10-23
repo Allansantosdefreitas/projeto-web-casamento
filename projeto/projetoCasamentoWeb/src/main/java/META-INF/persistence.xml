@@ -10,10 +10,10 @@
 		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Convidado</class>
 		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Convite</class>
 		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Profissional</class>
-		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Servico</class>
-		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa</class>
 		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Usuario</class>
 		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Grupo</class>
+		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Servico</class>
+		<class>br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa</class>
 
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 

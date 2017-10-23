@@ -22,6 +22,8 @@ public class Servico implements Serializable {
 
 	private float preco;
 
+	private int profissional_idUsuarioProfissional;
+
 	private Boolean statusDisponibilizado;
 
 	private String titulo;
@@ -30,9 +32,9 @@ public class Servico implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="Profissional_idUsuarioProfissional")
 	private Profissional profissional;
-
+	
 	//bi-directional many-to-one association to Tarefa
-	@OneToMany(mappedBy="servico")
+	@OneToMany(mappedBy="servico", cascade={CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	private List<Tarefa> tarefas;
 
 	public Servico() {
@@ -62,6 +64,14 @@ public class Servico implements Serializable {
 		this.preco = preco;
 	}
 
+	public int getProfissional_idUsuarioProfissional() {
+		return this.profissional_idUsuarioProfissional;
+	}
+
+	public void setProfissional_idUsuarioProfissional(int profissional_idUsuarioProfissional) {
+		this.profissional_idUsuarioProfissional = profissional_idUsuarioProfissional;
+	}
+
 	public Boolean getStatusDisponibilizado() {
 		return this.statusDisponibilizado;
 	}
@@ -79,7 +89,7 @@ public class Servico implements Serializable {
 	}
 
 	public Profissional getProfissional() {
-		return this.profissional;
+		return profissional;
 	}
 
 	public void setProfissional(Profissional profissional) {

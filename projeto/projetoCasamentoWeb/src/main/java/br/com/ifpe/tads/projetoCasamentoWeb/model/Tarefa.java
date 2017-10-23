@@ -18,6 +18,8 @@ public class Tarefa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idTarefa;
 
+	private int casamento_idCasamento;
+
 	@Temporal(TemporalType.DATE)
 	private Date data;
 
@@ -26,13 +28,13 @@ public class Tarefa implements Serializable {
 	private StatusTarefa status;
 
 	private String titulo;
-
+	
 	//bi-directional many-to-one association to Casamento
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Casamento casamento;
 
 	//bi-directional many-to-one association to Servico
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(cascade={CascadeType.PERSIST})
 	private Servico servico;
 
 	public Tarefa() {
@@ -44,6 +46,14 @@ public class Tarefa implements Serializable {
 
 	public void setIdTarefa(int idTarefa) {
 		this.idTarefa = idTarefa;
+	}
+
+	public int getCasamento_idCasamento() {
+		return this.casamento_idCasamento;
+	}
+
+	public void setCasamento_idCasamento(int casamento_idCasamento) {
+		this.casamento_idCasamento = casamento_idCasamento;
 	}
 
 	public Date getData() {
@@ -79,7 +89,7 @@ public class Tarefa implements Serializable {
 	}
 
 	public Casamento getCasamento() {
-		return this.casamento;
+		return casamento;
 	}
 
 	public void setCasamento(Casamento casamento) {

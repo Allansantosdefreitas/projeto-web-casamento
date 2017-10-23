@@ -39,6 +39,7 @@ public class LogoutServlet extends HttpServlet {
 
         //Remove o conjuge da sessão
         session.removeAttribute("conjuge");
+        session.removeAttribute("idCasamento");
 
         //Invalida a sessão
         session.invalidate();

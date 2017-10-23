@@ -89,9 +89,6 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 		
 		request.getRequestDispatcher("cadastrarCasamento.jsp").forward(request, response);
 		
-//		ConjugeRepository conjugeRepository = new ConjugeRepository();
-//		conjugeRepository.inserir(noivo);
-//		conjugeRepository.inserir(noiva);
 	}
 
 }

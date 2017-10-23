@@ -8,33 +8,68 @@
 		
 		<!-- Bootstrap's styles -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	
+		<!-- Login style -->
+		<link href="css/login.css" rel="stylesheet">
 	</head>
 	
 	<body>
 	
 		<!-- Navbar -->
-		<c:import url="/templates/navbar.jsp"/>
+		<header>
+	    	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	        	<a class="navbar-brand" href="index2.jsp">WeddingWeb</a>
+	        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+	        		<span class="navbar-toggler-icon"></span>
+	        	</button>
+		        <div class="collapse navbar-collapse" id="navbarCollapse">
+		        	<ul class="navbar-nav mr-auto">
+			            <li class="nav-item active">
+			            	<a class="nav-link" href="index2.jsp">Home <span class="sr-only">(current)</span></a>
+			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link" href="cadastrarCasamento.jsp">Casamento</a>
+			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link" href="listarTarefas.jsp">Tarefas</a>
+			            </li>
+		          	</ul>
+		          	<form class="form-inline mt-2 mt-md-0">
+		            	<a class="btn btn-outline-success my-2 my-sm-0" href="login.jsp">Login</a>
+		          	</form>
+		        </div>
+	    	</nav>
+	    </header>
 		
 		<div class="container">
-			<h2>Realize o seu login</h2>
-			
-			<form method="post" action="LoginServlet">
-				<div class="form-group">
-					<label>Login</label>
-					<input class="form-control" type="text" name="loginUsuario"/>
-				</div>
-				
-				<div class="form-group">
-					<label>Senha</label>
-					<input class="form-control" type="text" name="loginUsuario"/>
-				</div>
-				
-				<div class="form-group">
-					<button type="submit" class="btn btn-success">Enviar</button>
-				</div>
-			</form>
-		</div>
+
+		    <form class="form-signin" method="post" action="LoginServlet">
+		    
+			    <h2 class="form-signin-heading">Realize o seu login</h2>
+			    
+			    <label for="inputEmail" class="sr-only">Login</label>
+			    <input type="text" id="login" name="login" class="form-control" placeholder="Login" required autofocus>
+			    
+			    <label for="inputPassword" class="sr-only">Senha</label>
+			    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+			    
+			    <div class="checkbox">
+				    <label>
+				    	<input type="checkbox" value="remember-me"> Lembrar-me
+				    </label>
+			    </div>
+			    
+			    <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+		    </form>
+		    
+		    <hr class="featurette-divider">
+    	</div> <!-- /container -->
 		
+	    <!-- FOOTER -->
+	    <footer class="container">
+	    	<p>&copy; 2017 Jonathan Romualdo & Allan Santos &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+	    </footer>
+	    
 		<!-- Bootstrap's scripts -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

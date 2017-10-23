@@ -54,13 +54,14 @@ public class LoginServlet extends HttpServlet {
 			if (!loginUsuario.equalsIgnoreCase("") || !senhaUsuario.equalsIgnoreCase("")) {
 
 				//Procura o conjuge pelo login e senha (a senha é encriptada no método)
-				Conjuge conjuge = conjugeRepository.autenticar(loginUsuario, senhaUsuario);
+				Conjuge conjuge = conjugeRepository.autenticar2(loginUsuario, senhaUsuario);
 				
 				//Se o conjuge for encontrado...
 				if(conjuge != null) {
 					
 					//Atribui o conjuge na sessão
 					sessao.setAttribute("conjuge", conjuge);
+					sessao.setAttribute("idCasamento", conjuge.getCasamento().getIdCasamento());
 				} else {
 					
 					//Retorna a mensagem de "validação"
@@ -79,8 +80,8 @@ public class LoginServlet extends HttpServlet {
 			resultado = "Digite o login/senha";
 			request.setAttribute("resultado", resultado);
 		}
-		
-		
+		System.out.println(resultado);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 }
