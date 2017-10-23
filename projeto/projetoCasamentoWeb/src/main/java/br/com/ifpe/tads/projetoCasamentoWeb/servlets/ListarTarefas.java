@@ -1,6 +1,7 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class LogoutServlet
- */
-public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
+import br.com.ifpe.tads.projetoCasamentoWeb.repository.TarefaRepository;
 
+/**
+ * Servlet implementation class ListarTarefas
+ */
+public class ListarTarefas extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public ListarTarefas() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,17 +39,19 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		 //Pega a sessão do usuário
-        HttpSession session = request.getSession();
-
-        //Remove o conjuge da sessão
-        session.removeAttribute("conjuge");
-
-        //Invalida a sessão
-        session.invalidate();
+		//Pega a sessão do usuário
+        HttpSession sessao = request.getSession();
         
-        //Redireciona para a página inicial
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        //Cria uma lista de usuários
+        List<Tarefa> listaTarefas;
+        TarefaRepository tarefaRepository = new TarefaRepository();
+        
+        //Popula a lista utilizando como apoio o Dao de usuário
+        listaTarefas = tarefaRepository.listar();
+        
+        //Passa a lista com um atributo de sesssão e retorna para a página de gerencia
+        sessao.setAttribute("listaTarefas", listaTarefas);
+        response.sendRedirect(request.getContextPath()+ "/gerenciaContasAdmv2.jsp");
 	}
 
 }

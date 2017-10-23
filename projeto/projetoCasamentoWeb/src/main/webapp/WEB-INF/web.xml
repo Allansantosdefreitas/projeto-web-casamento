@@ -235,4 +235,14 @@
     <servlet-name>ProcurarProfissional</servlet-name>
     <url-pattern>/ProcurarProfissional</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListarTarefas</display-name>
+    <servlet-name>ListarTarefas</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.ListarTarefas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarTarefas</servlet-name>
+    <url-pattern>/ListarTarefas</url-pattern>
+  </servlet-mapping>
 </web-app>

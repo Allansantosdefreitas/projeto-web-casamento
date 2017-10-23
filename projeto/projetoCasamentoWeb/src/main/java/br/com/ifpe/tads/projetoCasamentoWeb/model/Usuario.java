@@ -29,6 +29,8 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	private String senha;
+	
+	private String salt;
 
 	public Usuario() {
 	}
@@ -81,4 +83,11 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 }

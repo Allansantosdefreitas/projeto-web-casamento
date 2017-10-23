@@ -1,3 +1,4 @@
+<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.StatusTarefa"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,15 +8,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	List<StatusTarefa> listaStatus = new ArrayList<StatusTarefa>();
-	listaStatus.addAll(StatusTarefa.valores());
+	HttpSession sessao = request.getSession();
+	List<Tarefa> listaTarefas = (List<Tarefa>) sessao.getAttribute("listaTarefas");
 	
-	request.setAttribute("listaStatus", listaStatus);
+	request.setAttribute("listaTarefas", listaTarefas);
 %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Adicionar Tarefa</title>
+		<title>Listar Tarefas</title>
 		
 		<!-- Bootstrap's styles -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -27,34 +28,52 @@
 		<c:import url="/templates/navbar.jsp"/>
 		
 		<div class="container">
-			<h2>Adicionar Tarefa</h2>
+			<h2>Listar Tarefas para o casamento</h2>
 			
-			<form method="post" action="CadastrarTarefaServlet">
-			
-				<div class="form-group">
-					<label>Título da tarefa: </label>
-					<input class="form-control" type="text" name="titulo"/>
-				</div>
-				
-				<div class="form-group">
-					<label>Descrição: </label>
-					<input class="form-control" type="text" name="descricao"/>
-				</div>
-				
-				<div class="form-group">
-					<label>Data para execução:</label>
-					<input class="form-control" type="date" name="data"/>
-				</div>
-				
-				<div class="form-group">
-					<label>Status</label>
-					<select class="form-control" name="statusSelectionado">
-						<c:forEach items="${listaStatus}" var="status">
-			                <option value="${status}">${status}</option>
-						</c:forEach>
-			        </select>
-				</div>
-			</form>	
+			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+	        	<thead>
+		            <button type="button" onclick="window.location.href = 'adicionarTarefas.jsp'" class="btn btn-outline-primary btn-sm">
+		                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Cadastrar Receita
+		            </button>
+		            <br/>
+		            <br/>
+		            <tr>
+		                <th>Título</th>
+		                <th>Descrição</th>
+		                <th>Data</th>
+		                <th>Status</th>
+		                <th>Opções</th>
+		            </tr>
+	            </thead>
+		        <tbody>
+		            <c:forEach items="${listaTarefas}" var="tarefa">
+		                <tr class="odd gradeX">
+		                    <td> <c:out value="${tarefa.titulo}"/></td>
+		                    <td> <c:out value="${tarefa.descricao}"/></td>
+		                    <td> <c:out value="${tarefa.data}"/></td>
+		                    <td> <c:out value="${tarefa.status}"/></td>
+		                    <td align="center"><font color="blue">
+		                        <form action="EditarTarefaServlet" method="POST">
+		                            <input type="hidden" value="${tarefa.idTarefa}" name="idDespesa">
+		                            <button type="submit" class="btn btn-default btn-sm">
+		                                <a href="#"><font color="blue">
+		                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></font> Editar 
+		                                </a>
+		                            </button>
+		                        </form>
+		                        <form action="DeletarTarefaServlet" method="POST">
+		                            <input type="hidden" value="${tarefa.idTarefa}" name="idDespesa">
+		                            <button type="submit" class="btn btn-default btn-sm">
+		                                <a href="#"><font color="blue"> 
+		                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></font> Excluir 
+		                                </a>
+		                            </button>
+		                        </form>
+		                    </td>
+		                </tr>
+		            </c:forEach>
+		        </tbody>
+			</table>
 		</div>
 		
 		<!-- Bootstrap's scripts -->

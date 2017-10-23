@@ -47,28 +47,49 @@ public class CadastrarTarefaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//Pega a sessão
 		HttpSession sessao = request.getSession();
 		
+		//Cria os repositórios
 		TarefaRepository tarefaRepository = new TarefaRepository();
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		
+		//Pega o id do casamento da sessão
 		Integer idCasamento = Integer.getInteger((String) sessao.getAttribute("idCasamento") );
 
+		//Pega os valores do formulário
 		String descricao = request.getParameter("descricao");
-//		StatusTarefa status = (StatusTarefa) request.getParameter("status");
-		StatusTarefa status = StatusTarefa.PENDENTE;
+		String status = request.getParameter("status");
+		//StatusTarefa status = StatusTarefa.PENDENTE;
 		String titulo = request.getParameter("titulo");
-		Casamento casamento = casamentoRepository.buscar(idCasamento);;
-		Servico servico = new Servico();
 		
+		//Busca o casamento a partir de seu id
+		Casamento casamento = casamentoRepository.buscar(idCasamento);
+		Servico servico = new Servico();
+
+		//Inicializando a tarefa
 		Tarefa tarefa = new Tarefa();
+		
+		//Verifica qual o status escolhido pelo usuário
+		for(StatusTarefa statusTarefa : StatusTarefa.values()){
+			
+			//Apenas para testes
+			System.out.println(statusTarefa.name());
+			
+			//Atribui o valor do status ao status da nova tarefa
+			if((statusTarefa.name()).equals(status)) {
+				tarefa.setStatus(statusTarefa);
+			}
+		}
+		
+		//Atribuindo os valores da tarefa
 		tarefa.setCasamento(casamento);
 		tarefa.setData(Date.from(Instant.now()));
 		tarefa.setDescricao(descricao);
 		tarefa.setServico(servico);
-		tarefa.setStatus(status);
 		tarefa.setTitulo(titulo);
 		
+		//Salva a tarefa
 		tarefaRepository.inserir(tarefa);
 	}
 
