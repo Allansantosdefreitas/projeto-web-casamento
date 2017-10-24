@@ -2,7 +2,9 @@ package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Casamento;
+import br.com.ifpe.tads.projetoCasamentoWeb.model.Profissional;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Servico;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.StatusTarefa;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
+import br.com.ifpe.tads.projetoCasamentoWeb.repository.ProfissionalRepository;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.TarefaRepository;
 
 /**
@@ -65,10 +69,35 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		
 		//Busca o casamento a partir de seu id
 		Casamento casamento = casamentoRepository.buscar(idCasamento);
-		Servico servico = new Servico();
-
+		
 		//Inicializando a tarefa
 		Tarefa tarefa = new Tarefa();
+		
+		List<Tarefa> tarefas = new ArrayList<Tarefa>();
+		tarefas.add(tarefa);
+		
+		
+		Servico servico = new Servico();
+		
+		List<Servico> servicos = new ArrayList<Servico>();
+		servicos.add(servico);
+
+		Profissional profissional = new Profissional();
+		profissional.setServicos(servicos);
+		profissional.setEmail("profissional@profissional.com");
+		profissional.setLogin("profissional");
+		profissional.setNome("profissional top");
+		profissional.setSenha("12341234");
+		
+		servico.setDescricao("Novo serviço para a tarefa: " + titulo + " do usuario");
+		servico.setPreco(00);
+		servico.setTitulo("Novo serviço");
+		servico.setTarefas(tarefas);
+		servico.setStatusDisponibilizado(Boolean.TRUE);
+		servico.setProfissional(profissional);
+		
+		ProfissionalRepository profissionalRepository = new ProfissionalRepository();
+		profissionalRepository.inserir(profissional);
 		
 		//Verifica qual o status escolhido pelo usuário
 		for(StatusTarefa statusTarefa : StatusTarefa.values()){
@@ -91,6 +120,8 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		
 		//Salva a tarefa
 		tarefaRepository.inserir(tarefa);
+		
+		request.getRequestDispatcher("listarTarefas.jsp").forward(request, response);
 	}
 
 }

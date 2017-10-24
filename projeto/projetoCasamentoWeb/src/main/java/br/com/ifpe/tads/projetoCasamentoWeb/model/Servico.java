@@ -2,6 +2,7 @@ package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class Servico implements Serializable {
 
 	//bi-directional many-to-one association to Profissional
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="Profissional_idUsuarioProfissional")
+	@JoinColumn(name="Profissional_idUsuarioProfissional", updatable = false, insertable = false)
 	private Profissional profissional;
 	
 	//bi-directional many-to-one association to Tarefa

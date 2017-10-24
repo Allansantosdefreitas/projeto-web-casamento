@@ -31,6 +31,7 @@ public class Tarefa implements Serializable {
 	
 	//bi-directional many-to-one association to Casamento
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(insertable = false, updatable = false)
 	private Casamento casamento;
 
 	//bi-directional many-to-one association to Servico
