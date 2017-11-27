@@ -50,6 +50,8 @@ public class LoginServlet extends HttpServlet {
 		
 		//Verifica se foi digitado algo nos campos
 		if(loginUsuario != null && senhaUsuario != null) {
+			
+			
 			//Verifica se o que foi digitado não é "espaço em branco"
 			if (!loginUsuario.equalsIgnoreCase("") || !senhaUsuario.equalsIgnoreCase("")) {
 

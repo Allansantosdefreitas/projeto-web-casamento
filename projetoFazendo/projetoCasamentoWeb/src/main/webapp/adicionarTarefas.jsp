@@ -8,8 +8,9 @@
 
 <%
 	List<StatusTarefa> listaStatus = new ArrayList<StatusTarefa>();
-	listaStatus.addAll(StatusTarefa.valores());
-	
+	/*listaStatus.addAll(StatusTarefa.valores());
+	por enquanto
+	*/	
 	request.setAttribute("listaStatus", listaStatus);
 %>
 <html>

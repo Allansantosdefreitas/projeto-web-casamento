@@ -16,7 +16,7 @@ public class ConjugeRepository extends Repository<Conjuge>{
 		EntityManager entityManager = getEntityManager();
 
 		//Prepara a busca do conjuge pelo login
-		String sqlLogin = "From Conjuge c where c.login = " + login;
+		String sqlLogin = "From TB_conjuge c where c.login = " + login;
 		
 		//Executa a query
 		Query query = entityManager.createQuery(sqlLogin);
@@ -44,7 +44,7 @@ public class ConjugeRepository extends Repository<Conjuge>{
 		EntityManager entityManager = getEntityManager();
 
 		//Prepara a busca do conjuge pelo login
-		String sqlLogin = "SELECT Casamento_idCasamento FROM conjuge c INNER JOIN usuario u ON c.idUsuarioProfissional = u.idUsuario WHERE u.login = ?1 and u.senha = ?2";
+		String sqlLogin = "SELECT id_Casamento FROM TB_conjuge c INNER JOIN TB_usuario u ON c.idUsuarioProfissional = u.idUsuario WHERE u.login = ?1 and u.senha = ?2";
 		
 		//Executa a query
 		Query query = entityManager.createNativeQuery(sqlLogin);

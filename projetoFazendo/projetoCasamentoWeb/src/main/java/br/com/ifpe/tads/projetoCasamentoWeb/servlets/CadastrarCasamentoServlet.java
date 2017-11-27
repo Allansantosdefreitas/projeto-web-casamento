@@ -14,6 +14,7 @@ import br.com.ifpe.tads.projetoCasamentoWeb.model.Casamento;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Conjuge;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Convidado;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Convite;
+import br.com.ifpe.tads.projetoCasamentoWeb.model.Despesa;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
 
@@ -58,6 +59,14 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 		
 		//Instanciando o casamento
 		Casamento casamento = new Casamento();
+		casamento.setNome( request.getParameter("nomeCasamento"));
+		
+		Despesa despesa = new Despesa();
+		despesa.setDespesaPrevista(orcamentoTotal);
+		despesa.setDespesaAtual(0.0);
+		//despesa.setCasamento(casamento);
+		
+		casamento.setDespesa(despesa);
 		
 		//Instantciando o noivo e a noiva
 		Conjuge noivo = new Conjuge();
@@ -95,7 +104,7 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		casamentoRepository.inserir(casamento);
 		
-		request.getRequestDispatcher("cadastrarCasamento.jsp").forward(request, response);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 		
 	}
 
