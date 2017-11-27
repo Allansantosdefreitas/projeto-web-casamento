@@ -11,30 +11,28 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name="Convite.findAll", query="SELECT c FROM Convite c")
 public class Convite implements Serializable {
-	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idConvite;
+	private int idConvite;
 
 	private String destinatarios;
 
 	private String mensagem;
 
 	//bi-directional one-to-one association to Casamento
-	@OneToOne(mappedBy = "convite", optional = false)
+	@OneToOne(cascade={CascadeType.PERSIST})
 	private Casamento casamento;
 
-        // convite não tem atributo convidado..o relacionamento é unidirecional
-           // com lado dominante em convidado
-        
 	public Convite() {
 	}
 
-	public Long getIdConvite() {
+	public int getIdConvite() {
 		return this.idConvite;
 	}
 
-	public void setIdConvite(Long idConvite) {
+	public void setIdConvite(int idConvite) {
 		this.idConvite = idConvite;
 	}
 

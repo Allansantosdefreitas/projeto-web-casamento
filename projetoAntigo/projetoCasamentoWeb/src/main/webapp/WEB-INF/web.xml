@@ -36,6 +36,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>CadastrarCasamentoServlet</display-name>
+    <servlet-name>CadastrarCasamentoServlet</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.CadastrarCasamentoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CadastrarCasamentoServlet</servlet-name>
+    <url-pattern>/CadastrarCasamentoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>EnviarConviteServlet</display-name>
     <servlet-name>EnviarConviteServlet</servlet-name>
     <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.EnviarConviteServlet</servlet-class>
@@ -243,27 +253,5 @@
   <servlet-mapping>
     <servlet-name>ListarTarefas</servlet-name>
     <url-pattern>/ListarTarefas</url-pattern>
-  </servlet-mapping>
- 
-  <servlet>
-    <description></description>
-    <display-name>TesteServlet</display-name>
-    <servlet-name>TesteServlet</servlet-name>
-    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.TesteServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TesteServlet</servlet-name>
-    <url-pattern>/TesteServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>CadastrarCasamentoServlet</display-name>
-    <servlet-name>CadastrarCasamentoServlet</servlet-name>
-    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.CadastrarCasamentoServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CadastrarCasamentoServlet</servlet-name>
-    <url-pattern>/CadastrarCasamentoServlet</url-pattern>
   </servlet-mapping>
 </web-app>

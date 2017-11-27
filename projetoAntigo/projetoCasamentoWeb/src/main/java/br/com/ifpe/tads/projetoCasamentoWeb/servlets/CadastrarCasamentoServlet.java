@@ -1,6 +1,5 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +15,6 @@ import br.com.ifpe.tads.projetoCasamentoWeb.model.Convidado;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Convite;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
-
-//import br.com.ifpe.tads.projetoCasamentoWeb.model.Casamento;
-//import br.com.ifpe.tads.projetoCasamentoWeb.model.Conjuge;
-//import br.com.ifpe.tads.projetoCasamentoWeb.model.Convidado;
-//import br.com.ifpe.tads.projetoCasamentoWeb.model.Convite;
-//import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
-//import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
 
 /**
  * Servlet implementation class CadastrarCasamentoServlet
@@ -44,7 +36,7 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at ADFAD: ").append(request.getContextPath());
 	}
 
 	/**
@@ -79,7 +71,7 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 		conjuges.add(noivo);
 		conjuges.add(noiva);
 		
-		//Outros atributos necessï¿½rios para casamento
+		//Outros atributos necessários para casamento
 		List<Convidado> convidados = new ArrayList<Convidado>();
 		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 		Convite convite = new Convite();
@@ -90,7 +82,7 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 		casamento.setConvidados(convidados);
 		casamento.setTarefas(tarefas);
 //		casamento.setConvite(convite);
-//		casamento.setOrcamentoTotal(orcamentoTotal);
+		casamento.setOrcamentoTotal(orcamentoTotal);
 		
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		casamentoRepository.inserir(casamento);

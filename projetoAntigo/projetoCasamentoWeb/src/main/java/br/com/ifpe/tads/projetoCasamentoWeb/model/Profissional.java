@@ -10,17 +10,18 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name = "TB_profissional")
-@DiscriminatorValue(value = "PROF")
+@DiscriminatorValue(value = "pro")
 @PrimaryKeyJoinColumn(name = "idUsuarioProfissional", referencedColumnName = "idUsuario")
 @NamedQuery(name="Profissional.findAll", query="SELECT p FROM Profissional p")
 public class Profissional extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-        
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	private int idUsuarioProfissional;
+
 	//bi-directional many-to-one association to Servico
-	@OneToMany(mappedBy="profissional", fetch = FetchType.LAZY, 
-                cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="profissional")
 	private List<Servico> servicos;
 
 	public Profissional() {
@@ -43,14 +44,14 @@ public class Profissional extends Usuario implements Serializable {
 	}
 
 	public Servico addServico(Servico servico) {
-		this.getServicos().add(servico);
+		getServicos().add(servico);
 		servico.setProfissional(this);
 
 		return servico;
 	}
 
 	public Servico removeServico(Servico servico) {
-		this.getServicos().remove(servico);
+		getServicos().remove(servico);
 		servico.setProfissional(null);
 
 		return servico;

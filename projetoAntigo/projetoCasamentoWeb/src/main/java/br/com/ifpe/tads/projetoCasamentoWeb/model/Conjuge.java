@@ -9,15 +9,18 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name = "TB_conjuge")
-@DiscriminatorValue(value = "CONJ")
+@DiscriminatorValue(value = "con")
 @PrimaryKeyJoinColumn(name = "idUsuarioProfissional", referencedColumnName = "idUsuario")
 @NamedQuery(name="Conjuge.findAll", query="SELECT c FROM Conjuge c")
 public class Conjuge extends Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	private int idUsuarioProfissional;
 
 	//bi-directional many-to-one association to Casamento
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
-        @JoinColumn(name = "ID_casamento", referencedColumnName = "idCasamento")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Casamento casamento;
 
 	public Conjuge() {

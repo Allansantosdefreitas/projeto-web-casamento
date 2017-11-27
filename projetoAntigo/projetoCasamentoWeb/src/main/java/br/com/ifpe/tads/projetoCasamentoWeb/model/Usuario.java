@@ -1,118 +1,95 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Objects;
 import javax.persistence.*;
+
 
 /**
  * The persistent class for the usuario database table.
- *
+ * 
  */
 @Entity
-@Table(name = "TB_usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "disc_usuario", discriminatorType = DiscriminatorType.STRING, length = 4)
-@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-@Access(AccessType.FIELD)
+@DiscriminatorColumn(name = "disc_usuario", discriminatorType = DiscriminatorType.STRING, length = 3) // 3 é o tamanho do campo discriminator (disc_usuario)
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idUsuario;
 
-    @Column(name = "disc_usuario")
-    private String discUsuario;
+	@Column(name="disc_usuario")
+	private String discUsuario;
 
-    private String email;
+	@Column (unique = true)
+	private String email;
 
-    private String login;
+	@Column (unique = true)
+	private String login;
 
-    private String nome;
+	private String nome;
 
-    private String senha;
-    
-    
-    public Usuario() {
-    }
-    
-    public Long getIdUsuario() {
-        return this.idUsuario;
-    }
+	private String senha;
+	
+//	private String salt;
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public Usuario() {
+	}
 
-    public String getDiscUsuario() {
-        return this.discUsuario;
-    }
+	public int getIdUsuario() {
+		return this.idUsuario;
+	}
 
-    public void setDiscUsuario(String discUsuario) {
-        this.discUsuario = discUsuario;
-    }
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-    public String getEmail() {
-        return this.email;
-    }
+	public String getDiscUsuario() {
+		return this.discUsuario;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setDiscUsuario(String discUsuario) {
+		this.discUsuario = discUsuario;
+	}
 
-    public String getLogin() {
-        return this.login;
-    }
+	public String getEmail() {
+		return this.email;
+	}
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getNome() {
-        return this.nome;
-    }
+	public String getLogin() {
+		return this.login;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public String getSenha() {
-        return this.senha;
-    }
+	public String getNome() {
+		return this.nome;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.idUsuario);
-        return hash;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
-            return false;
-        }
-        return true;
-    }
+	public String getSenha() {
+		return this.senha;
+	}
 
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+//	public String getSalt() {
+//		return salt;
+//	}
+//
+//	public void setSalt(String salt) {
+//		this.salt = salt;
+//	}
 }

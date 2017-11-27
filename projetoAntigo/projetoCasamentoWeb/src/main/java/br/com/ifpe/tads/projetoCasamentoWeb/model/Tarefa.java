@@ -3,128 +3,106 @@ package br.com.ifpe.tads.projetoCasamentoWeb.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
+
 
 /**
  * The persistent class for the tarefa database table.
- *
+ * 
  */
 @Entity
-@Table(name = "TB_tarefa")
-@NamedQuery(name = "Tarefa.findAll", query = "SELECT t FROM Tarefa t")
+@NamedQuery(name="Tarefa.findAll", query="SELECT t FROM Tarefa t")
 public class Tarefa implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-//    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTarefa;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idTarefa;
 
-    @Column(name = "STR_titulo")
-    private String titulo;
+	private int casamento_idCasamento;
 
-    @Column(name = "STR_descricao")
-    private String descricao;
+	@Temporal(TemporalType.DATE)
+	private Date data;
 
-    @Column(name = "DTE_data")
-    @Temporal(TemporalType.DATE)
-    private Date data;
+	private String descricao;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ENM_status")
-    private StatusTarefa status;
+	private StatusTarefa status;
 
-    //bi-directional many-to-one association to Casamento
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_casamento", referencedColumnName = "idCasamento")
-    private Casamento casamento;
+	private String titulo;
+	
+	//bi-directional many-to-one association to Casamento
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(insertable = false, updatable = false)
+	private Casamento casamento;
 
-    //bi-directional many-to-one association to Servico
-    @ManyToOne(fetch = FetchType.EAGER, optional = true) // Tarefa não precisa ter um serviço
-    @JoinColumn(name = "ID_servico", referencedColumnName = "idServico")
-    private Servico servico;
+	//bi-directional many-to-one association to Servico
+	@ManyToOne(cascade={CascadeType.PERSIST})
+	private Servico servico;
 
-    public Tarefa() {
-    }
+	public Tarefa() {
+	}
 
-    public Long getIdTarefa() {
-        return this.idTarefa;
-    }
+	public int getIdTarefa() {
+		return this.idTarefa;
+	}
 
-    public void setIdTarefa(Long idTarefa) {
-        this.idTarefa = idTarefa;
-    }
+	public void setIdTarefa(int idTarefa) {
+		this.idTarefa = idTarefa;
+	}
 
-    public Date getData() {
-        return this.data;
-    }
+	public int getCasamento_idCasamento() {
+		return this.casamento_idCasamento;
+	}
 
-    public void setData(Date data) {
-        this.data = data;
-    }
+	public void setCasamento_idCasamento(int casamento_idCasamento) {
+		this.casamento_idCasamento = casamento_idCasamento;
+	}
 
-    public String getDescricao() {
-        return this.descricao;
-    }
+	public Date getData() {
+		return this.data;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public void setData(Date data) {
+		this.data = data;
+	}
 
-    public StatusTarefa getStatus() {
-        return this.status;
-    }
+	public String getDescricao() {
+		return this.descricao;
+	}
 
-    public void setStatus(StatusTarefa status) {
-        this.status = status;
-    }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    public String getTitulo() {
-        return this.titulo;
-    }
+	public StatusTarefa getStatus() {
+		return this.status;
+	}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+	public void setStatus(StatusTarefa status) {
+		this.status = status;
+	}
 
-    public Casamento getCasamento() {
-        return this.casamento;
-    }
+	public String getTitulo() {
+		return this.titulo;
+	}
 
-    public void setCasamento(Casamento casamento) {
-        this.casamento = casamento;
-    }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public Servico getServico() {
-        return this.servico;
-    }
+	public Casamento getCasamento() {
+		return casamento;
+	}
 
-    public void setServico(Servico servico) {
-        this.servico = servico;
-    }
+	public void setCasamento(Casamento casamento) {
+		this.casamento = casamento;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.idTarefa);
-        return hash;
-    }
+	public Servico getServico() {
+		return this.servico;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Tarefa other = (Tarefa) obj;
-        if (!Objects.equals(this.idTarefa, other.idTarefa)) {
-            return false;
-        }
-        return true;
-    }
+	public void setServico(Servico servico) {
+		this.servico = servico;
+	}
 
 }
