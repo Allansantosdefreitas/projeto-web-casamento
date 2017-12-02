@@ -28,11 +28,11 @@ public class ConjugeRepository extends Repository<Conjuge>{
 		if(conjuge != null) {
 			
 			//Procura o conjuge agora pelo login e a senha, utilizando o salt para verificar a senha já encriptada
-			//String sqlSenha = "From Conjuge c where c.login = " + login + " and c.senha = AES_ENCRYPT(" + senha + "," + conjuge.getSalt() + ")";
-			//Query novaQuery = entityManager.createQuery(sqlSenha);
-			
-			//Executa a query
-			//conjugeFinal = (Conjuge) novaQuery.getSingleResult();
+//			String sqlSenha = "From Conjuge c where c.login = " + login + " and c.senha = AES_ENCRYPT(" + senha + "," + conjuge.getSalt() + ")";
+//			Query novaQuery = entityManager.createQuery(sqlSenha);
+//			
+//			//Executa a query
+//			conjugeFinal = (Conjuge) novaQuery.getSingleResult();
 		}
 		
 		//Retorna o conjuge encontrado ou não (é preciso verificar se o conjuge foi encontrado ou não)
@@ -44,7 +44,7 @@ public class ConjugeRepository extends Repository<Conjuge>{
 		EntityManager entityManager = getEntityManager();
 
 		//Prepara a busca do conjuge pelo login
-		String sqlLogin = "SELECT id_Casamento FROM TB_conjuge c INNER JOIN TB_usuario u ON c.idUsuarioProfissional = u.idUsuario WHERE u.login = ?1 and u.senha = ?2";
+		String sqlLogin = "SELECT id_Casamento FROM TB_conjuge c INNER JOIN TB_usuario u ON c.idConjuge = u.idUsuario WHERE u.login = ?1 and u.senha = ?2";
 		
 		//Executa a query
 		Query query = entityManager.createNativeQuery(sqlLogin);
@@ -54,7 +54,8 @@ public class ConjugeRepository extends Repository<Conjuge>{
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		
 		Conjuge conjuge = new Conjuge();
-		conjuge.setCasamento(casamentoRepository.buscar( (Integer) query.getSingleResult() ));
+		
+		conjuge.setCasamento(casamentoRepository.buscar((Long) query.getSingleResult() ));
 		
 		return conjuge;
 

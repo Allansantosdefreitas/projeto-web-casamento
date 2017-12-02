@@ -38,7 +38,7 @@ public class DeletarTarefaServlet extends HttpServlet {
 		
 		TarefaRepository tarefaRepository = new TarefaRepository();
 		
-		Integer idTarefa = Integer.getInteger((String) request.getParameter("idTarefa") );;
+		Long idTarefa = Long.valueOf( ((String) request.getParameter("idTarefa"))  );
 		
 		Tarefa tarefa = tarefaRepository.buscar(idTarefa);
 		tarefaRepository.deletar(tarefa);

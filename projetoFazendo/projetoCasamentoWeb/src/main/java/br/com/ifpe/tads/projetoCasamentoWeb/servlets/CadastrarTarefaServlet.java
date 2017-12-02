@@ -59,7 +59,7 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		
 		//Pega o id do casamento da sessão
-		Integer idCasamento = (Integer) sessao.getAttribute("idCasamento");
+		Long idCasamento = Long.valueOf( (String) sessao.getAttribute("idCasamento"));
 
 		//Pega os valores do formulário
 		String descricao = request.getParameter("descricao");

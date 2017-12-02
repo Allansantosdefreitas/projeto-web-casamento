@@ -40,7 +40,7 @@ public class DeletarServicoServlet extends HttpServlet {
 
 		ServicoRepository servicoRepository = new ServicoRepository();
 		
-		Integer idServico = Integer.getInteger((String) request.getParameter("idServico"));
+		Long idServico = Long.valueOf( ((String) request.getParameter("idServico") ));
 		Servico servico = servicoRepository.buscar(idServico);
 
 		servicoRepository.deletar(servico);

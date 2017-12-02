@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TB_conjuge")
 @DiscriminatorValue(value = "CONJ")
-@PrimaryKeyJoinColumn(name = "idUsuarioProfissional", referencedColumnName = "idUsuario")
+@PrimaryKeyJoinColumn(name = "idConjuge", referencedColumnName = "idUsuario")
 @NamedQuery(name="Conjuge.findAll", query="SELECT c FROM Conjuge c")
 public class Conjuge extends Usuario implements Serializable {
 

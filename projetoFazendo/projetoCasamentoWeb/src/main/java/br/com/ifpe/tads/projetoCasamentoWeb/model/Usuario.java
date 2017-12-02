@@ -38,7 +38,8 @@ public class Usuario implements Serializable {
 
     private String senha;
     
-    
+//    private String salt;
+
     public Usuario() {
     }
     
@@ -89,8 +90,17 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    @Override
+
+
+//	public String getSalt() {
+//		return salt;
+//	}
+//
+//	public void setSalt(String salt) {
+//		this.salt = salt;
+//	}
+
+	@Override
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.idUsuario);

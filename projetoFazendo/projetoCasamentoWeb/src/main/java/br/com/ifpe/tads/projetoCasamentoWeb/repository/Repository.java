@@ -48,7 +48,7 @@ public abstract class Repository<Entidade> {
 		em.remove(em.merge(entidade));
 	}
 
-	public Entidade buscar(Integer idEntidade) {
+	public Entidade buscar(Long idEntidade) {
 		return em.find(classe, idEntidade);
 	}
 
