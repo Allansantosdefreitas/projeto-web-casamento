@@ -72,8 +72,14 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		
 		String titulo = request.getParameter("titulo");
 		
-		//String dataString = request.getParameter("data");
-	
+		String dataString = request.getParameter("data");
+		
+		// Formatando a data :(
+
+		//		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+//		Date data = df.parse(dataString);
+//		
+		
 		//Busca o casamento a partir de seu id
 		Casamento casamento = casamentoRepository.buscar(idCasamento);
 		
@@ -133,6 +139,10 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		
 		//Salva a tarefa
 		tarefaRepository.inserir(tarefa);
+		
+		//Pega a sessão
+		sessao.setAttribute("listaTarefas", tarefas);
+
 		
 		request.getRequestDispatcher("listarTarefas.jsp").forward(request, response);
 	}
