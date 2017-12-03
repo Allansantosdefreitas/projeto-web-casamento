@@ -41,7 +41,7 @@ public class DeletarCasamentoServlet extends HttpServlet {
 		
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		
-		Integer idCasamento = Integer.getInteger( (String) sessao.getAttribute("idCasamento"));
+		Long idCasamento = Long.valueOf( ( (String) sessao.getAttribute("idCasamento") ) );
 		
 		Casamento casamento = casamentoRepository.buscar(idCasamento);
 		casamentoRepository.deletar(casamento);

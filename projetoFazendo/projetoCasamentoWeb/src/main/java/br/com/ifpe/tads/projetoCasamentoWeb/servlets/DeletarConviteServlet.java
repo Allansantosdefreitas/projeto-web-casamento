@@ -38,7 +38,7 @@ public class DeletarConviteServlet extends HttpServlet {
 
 		ConviteRepository conviteRepository = new ConviteRepository();
 		
-		Integer idConvite = Integer.getInteger( request.getParameter("idConvite"));
+		Long idConvite = Long.valueOf( ( request.getParameter("idConvite")) );
 		
 		Convite convite = conviteRepository.buscar(idConvite);
 		conviteRepository.deletar(convite);

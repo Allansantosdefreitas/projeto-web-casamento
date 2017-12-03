@@ -9,6 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name = "TB_convite")
 @NamedQuery(name="Convite.findAll", query="SELECT c FROM Convite c")
 public class Convite implements Serializable {
 	

@@ -34,9 +34,8 @@ public class Despesa implements Serializable{
     @Column(name = "DBL_despesa_atual")
     private Double despesaAtual; 
     
-    @Column(name = "DBL_valor_restante")
-   
-    private Double valorRestante;
+//    @Column(name = "DBL_valor_restante")
+//    private Double valorRestante;
     
     @OneToOne(mappedBy = "despesa", optional = false)
     private Casamento casamento;
@@ -69,13 +68,13 @@ public class Despesa implements Serializable{
         this.despesaAtual = despesaAtual;
     }
 
-    public Double getValorRestante() {
-        return valorRestante;
-    }
-
-    public void setValorRestante(Double valorRestante) {
-        this.valorRestante = valorRestante;
-    }
+//    public Double getValorRestante() {
+//        return valorRestante;
+//    }
+//
+//    public void setValorRestante(Double valorRestante) {
+//        this.valorRestante = valorRestante;
+//    }
 
     public Casamento getCasamento() {
         return casamento;

@@ -51,7 +51,7 @@ public class CadastrarConviteServlet extends HttpServlet {
 		String destinatarios = request.getParameter("destinatario");
 		String mensagem = request.getParameter("mensagem");
 		
-		Integer idCasamento = Integer.getInteger( (String) sessao.getAttribute("idCasamento"));
+		Long idCasamento = Long.valueOf( ( (String) sessao.getAttribute("idCasamento")) ) ;
 		Casamento casamento = casamentoRepository.buscar(idCasamento);
 		
 		Convite convite = new Convite();

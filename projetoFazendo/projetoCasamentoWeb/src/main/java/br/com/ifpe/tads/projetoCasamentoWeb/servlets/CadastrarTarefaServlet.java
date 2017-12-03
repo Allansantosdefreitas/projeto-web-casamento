@@ -1,6 +1,8 @@
 package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,68 +60,89 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		TarefaRepository tarefaRepository = new TarefaRepository();
 		CasamentoRepository casamentoRepository = new CasamentoRepository();
 		
+		
 		//Pega o id do casamento da sessão
-		Integer idCasamento = (Integer) sessao.getAttribute("idCasamento");
+		//Long idCasamento = Long.parseLong( (String) sessao.getAttribute("idCasamento"));
+		Long idCasamento = (Long) sessao.getAttribute("idCasamento");
+		
 
 		//Pega os valores do formulário
 		String descricao = request.getParameter("descricao");
 		String status = request.getParameter("status");
-		//StatusTarefa status = StatusTarefa.PENDENTE;
+		
 		String titulo = request.getParameter("titulo");
+		
+		String dataString = request.getParameter("data");
+		
+		// Formatando a data :(
+
+		//		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+//		Date data = df.parse(dataString);
+//		
 		
 		//Busca o casamento a partir de seu id
 		Casamento casamento = casamentoRepository.buscar(idCasamento);
 		
 		//Inicializando a tarefa
 		Tarefa tarefa = new Tarefa();
+//		
+//		tarefa.setCasamento(casamento);
+//		tarefa.setTitulo(titulo);
+//		tarefa.setDescricao(descricao);
+//		tarefa.setStatus(StatusTarefa.PENDENTE);
 		
 		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 		tarefas.add(tarefa);
 		
 		
-		Servico servico = new Servico();
-		
-		List<Servico> servicos = new ArrayList<Servico>();
-		servicos.add(servico);
-
-		Profissional profissional = new Profissional();
-		profissional.setServicos(servicos);
-		profissional.setEmail("profissional@profissional.com");
-		profissional.setLogin("profissional");
-		profissional.setNome("profissional top");
-		profissional.setSenha("12341234");
-		
-		servico.setDescricao("Novo serviço para a tarefa: " + titulo + " do usuario");
-		servico.setPreco(00);
-		servico.setTitulo("Novo serviço");
-		servico.setTarefas(tarefas);
-		servico.setStatusDisponibilizado(Boolean.TRUE);
-		servico.setProfissional(profissional);
-		
-		ProfissionalRepository profissionalRepository = new ProfissionalRepository();
-		profissionalRepository.inserir(profissional);
+//		Servico servico = new Servico();
+//		
+//		List<Servico> servicos = new ArrayList<Servico>();
+//		servicos.add(servico);
+//
+//		Profissional profissional = new Profissional();
+//		profissional.setServicos(servicos);
+//		profissional.setEmail("profissional@profissional.com");
+//		profissional.setLogin("profissional");
+//		profissional.setNome("profissional top");
+//		profissional.setSenha("12341234");
+//		
+//		servico.setDescricao("Novo serviço para a tarefa: " + titulo + " do usuario");
+//		servico.setPreco(00);
+//		servico.setTitulo("Novo serviço");
+//		servico.setTarefas(tarefas);
+//		servico.setStatusDisponibilizado(Boolean.TRUE);
+//		servico.setProfissional(profissional);
+//		
+//		ProfissionalRepository profissionalRepository = new ProfissionalRepository();
+//		profissionalRepository.inserir(profissional);
 		
 		//Verifica qual o status escolhido pelo usuário
-		for(StatusTarefa statusTarefa : StatusTarefa.values()){
-			
-			//Apenas para testes
-			System.out.println(statusTarefa.name());
-			
-			//Atribui o valor do status ao status da nova tarefa
-			if((statusTarefa.name()).equals(status)) {
-				tarefa.setStatus(statusTarefa);
-			}
-		}
+
+//		for(StatusTarefa statusTarefa : StatusTarefa.values()){
+//			
+//			//Apenas para testes
+//			System.out.println(statusTarefa.name());
+//			
+//			//Atribui o valor do status ao status da nova tarefa
+//			if((statusTarefa.name()).equals(status)) {
+//				tarefa.setStatus(statusTarefa);
+//			}
+//		}
 		
 		//Atribuindo os valores da tarefa
 		tarefa.setCasamento(casamento);
 		tarefa.setData(Date.from(Instant.now()));
 		tarefa.setDescricao(descricao);
-		tarefa.setServico(servico);
+//		tarefa.setServico(servico);
 		tarefa.setTitulo(titulo);
 		
 		//Salva a tarefa
 		tarefaRepository.inserir(tarefa);
+		
+		//Pega a sessão
+		sessao.setAttribute("listaTarefas", tarefas);
+
 		
 		request.getRequestDispatcher("listarTarefas.jsp").forward(request, response);
 	}
