@@ -26,7 +26,10 @@
 			            	<a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			            	<a class="nav-link" href="cadastrarCasamento.jsp">Casamento</a>
+			            	<a class="nav-link" href="cadastrarCasamento.jsp">Cadastro</a>
+			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link" href="gerenciar.jsp">Casamento</a>
 			            </li>
 			            <li class="nav-item">
 			            	<a class="nav-link" href="listarTarefas.jsp">Tarefas</a>

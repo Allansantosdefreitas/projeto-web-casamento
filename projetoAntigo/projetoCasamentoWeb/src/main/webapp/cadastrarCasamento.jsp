@@ -20,10 +20,6 @@
 			<h2 class="text-center">Cadastre seu casamento!</h2>
 			
 			<form action="CadastrarCasamentoServlet" method="post">
-				<div class="form-group col-sm-12">
-					<label>Orçamento desejado:</label>
-					<input type="number" class="form-control" name="orcamentoTotal"/>
-				</div>
 				
 				<fieldset>
 					<legend>Dados do noivo</legend>
