@@ -1,3 +1,5 @@
+
+<%@include file="includes/sessaoPaginaExterna.jsp" %> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -55,7 +57,7 @@
 			            	<div class="carousel-caption text-left">
 				                <h1>Uma cerimônia sem igual.</h1>
 				                <p>É isso que achamos de uma cerimônia de casamento, um momento único e especial e que deve ser executado com maestria. Portanto deixe-nos cuidar de tudo pra você.</p>
-				                <p><a class="btn btn-lg btn-primary" href="#" role="button">Faça seu cadastro!</a></p>
+				                <p><a class="btn btn-lg btn-primary" href="cadastrarCasamento.jsp" role="button">Faça seu cadastro!</a></p>
 			            	</div>
 			            </div>
 	          		</div>
@@ -65,7 +67,7 @@
 				          	<div class="carousel-caption">
 					          	<h1>Muitas tarefas?</h1>
 					          	<p>O WeddingWeb gerencia suas tarefas para que você esteja focado no que realmente interessa, poupando-lhe o tempo.</p>
-					          	<p><a class="btn btn-lg btn-primary" href="#" role="button">Faça seu cadastro!</a></p>
+					          	<p><a class="btn btn-lg btn-primary" href="cadastrarCasamento.jsp" role="button">Faça seu cadastro!</a></p>
 				          	</div>
 			          	</div>
 		          	</div>
@@ -75,7 +77,7 @@
 					    	<div class="carousel-caption text-right">
 						    	<h1>E as despesas?</h1>
 						    	<p>O WeddingWeb gerencia a contratação de profissionais e serviços, possibilitanto ainda o acompanhamento de seus gastos com a cerimônia.</p>
-						    	<p><a class="btn btn-lg btn-primary" href="#" role="button">Faça seu cadastro!</a></p>
+						    	<p><a class="btn btn-lg btn-primary" href="cadastrarCasamento.jsp" role="button">Faça seu cadastro!</a></p>
 					    	</div>
 				    	</div>
 			    	</div>

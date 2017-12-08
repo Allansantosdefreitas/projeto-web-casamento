@@ -1,3 +1,4 @@
+<%@include file="includes/sessaoPaginaInterna.jsp" %>
 <%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.StatusTarefa"%>
@@ -18,7 +19,7 @@
 	//List<Tarefa> listaTarefas = (List<Tarefa>) sessao.getAttribute("listaTarefas");
 
 	//request.setAttribute("listaTarefas", listaTarefas);
-	HttpSession sessao = request.getSession();
+	//HttpSession sessao = request.getSession();
 
 	List<Tarefa> listaTarefas;
 	TarefaRepository tarefaRepository = new TarefaRepository();

@@ -1,3 +1,4 @@
+<%@include file="includes/sessaoPaginaInterna.jsp" %> 
 <%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.StatusTarefa"%>
@@ -8,7 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	HttpSession sessao = request.getSession();
+
+//	HttpSession sessao = request.getSession();
 	List<Tarefa> listaTarefas = (List<Tarefa>) sessao.getAttribute("listaTarefas");
 	
 	request.setAttribute("listaTarefas", listaTarefas);
@@ -28,7 +30,7 @@
 		<c:import url="/templates/navbar.jsp"/>
 		
 		<div class="container">
-			<h2>Listar Tarefas para o casamento</h2>
+			<h2>Listar Serviços para o casamento</h2>
 			
 			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 	        	<thead>

@@ -67,6 +67,9 @@ public class LoginServlet extends HttpServlet {
 
 					// Atribui o conjuge na sessão
 					sessao.setAttribute("conjuge", conjuge);
+
+					sessao.setAttribute("conjugeNome", conjuge.getNome() );
+					
 					sessao.setAttribute("idCasamento", conjuge.getCasamento().getIdCasamento());
 				} else {
 
@@ -93,9 +96,13 @@ public class LoginServlet extends HttpServlet {
 		
 		if (resultado.equals("sucesso")) {
 			
+			sessao.setAttribute("isActive", "verdadeiro");
+
 			view = request.getRequestDispatcher("listarTarefas.jsp");
 
 		} else {
+			sessao.setAttribute("isActive", "falso");
+			
 			view = request.getRequestDispatcher("login.jsp");
 		}
 		

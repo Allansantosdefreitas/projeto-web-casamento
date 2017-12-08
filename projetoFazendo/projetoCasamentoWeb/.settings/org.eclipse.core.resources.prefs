@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/main/java/br/com/ifpe/tads/projetoCasamentoWeb/servlets/CadastrarCasamentoServlet.java=UTF-8
+encoding//src/main/webapp/includes/sessaoPaginaExterna.jsp=UTF-8
+encoding//src/main/webapp/includes/sessaoPaginaInterna.jsp=UTF-8
