@@ -16,26 +16,29 @@ public class UsuarioRepository extends Repository<Usuario>{
 	// FALTA FAZER UM LOGIN QUE ABSTRAIA O TIPO DE USUÁRIO
 	//ALLAN, 09/12
 	//(03H02)
-	public Conjuge autenticarUsuario(String login, String senha) {
+	public Usuario autenticarUsuario(String login, String senha) {
 		
 		//Busca o entity manager
 		EntityManager entityManager = getEntityManager();
 
-		//Prepara a busca do conjuge pelo login
-		String sqlLogin = "SELECT id_Casamento FROM TB_conjuge c INNER JOIN TB_usuario u ON c.idConjuge = u.idUsuario WHERE u.login = ?1 and u.senha = ?2";
+		//Prepara a busca do conjuge pelo login (por query nativa)
+		//String sqlLogin = "SELECT idUsuarioProfissional FROM TB_profissional p INNER JOIN TB_usuario u ON p.idUsuarioProfissional = u.idUsuario WHERE u.login = ?1 and u.senha = ?2";
+		String sqlLogin = "SELECT idUsuario FROM TB_usuario u WHERE u.login = ?1 and u.senha = ?2";
 		
-		//Executa a query
+		//Executa a query nativa
 		Query query = entityManager.createNativeQuery(sqlLogin);
 		query.setParameter(1, login);
 		query.setParameter(2, senha);
+
+		UsuarioRepository usuarioRepository = new UsuarioRepository();
 		
-		CasamentoRepository casamentoRepository = new CasamentoRepository();
+		Long idUsuario = (Long) query.getSingleResult();
 		
-		Conjuge conjuge = new Conjuge();
+		Usuario usuario = (Usuario) usuarioRepository.buscar(idUsuario);
 		
-		conjuge.setCasamento(casamentoRepository.buscar((Long) query.getSingleResult() ));
-		
-		return conjuge;
+		//conjuge.setCasamento(casamentoRepository.buscar((Long) query.getSingleResult() ));
+				
+		return usuario;
 
 	}
 }

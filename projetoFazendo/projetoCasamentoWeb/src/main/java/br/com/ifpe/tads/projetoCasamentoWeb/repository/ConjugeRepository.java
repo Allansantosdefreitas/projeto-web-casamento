@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Conjuge;
+import br.com.ifpe.tads.projetoCasamentoWeb.model.Usuario;
 
 public class ConjugeRepository extends Repository<Conjuge>{
 
@@ -60,4 +61,31 @@ public class ConjugeRepository extends Repository<Conjuge>{
 		return conjuge;
 
 	}
+	
+	public Conjuge buscarConjuge(Usuario usuario) {
+		//Busca o entity manager
+		EntityManager entityManager = getEntityManager();
+
+		//Prepara a busca do conjuge pelo login
+		String sqlLogin = "SELECT id_Casamento FROM TB_conjuge c INNER JOIN TB_usuario u ON c.idConjuge = u.idUsuario WHERE u.idUsuario = ?1";
+		
+		//Executa a query
+		Query query = entityManager.createNativeQuery(sqlLogin);
+		query.setParameter( 1, usuario.getIdUsuario() );
+		
+		CasamentoRepository casamentoRepository = new CasamentoRepository();
+		
+		
+		Conjuge conjuge = (Conjuge) usuario;
+		
+		// Conjuge =  usuario
+		// depis seta casamento
+		
+		conjuge.setCasamento(casamentoRepository.buscar((Long) query.getSingleResult() ));
+		
+		return conjuge;
+
+	}
+
+	
 }

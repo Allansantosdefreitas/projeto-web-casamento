@@ -44,7 +44,7 @@
 		
 		<div class="container">
 
-		    <form class="form-signin" method="post" action="LoginServlet">
+		    <form class="form-signin" method="post" action="LoginUsuarioServlet">
 		    
 			    <h2 class="form-signin-heading">Realize o seu login</h2>
 			    

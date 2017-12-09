@@ -8,10 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Profissional;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Servico;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
+import br.com.ifpe.tads.projetoCasamentoWeb.repository.ProfissionalRepository;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.ServicoRepository;
 
 /**
@@ -44,12 +46,17 @@ public class CadastrarServicoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		HttpSession sessao = request.getSession();
+		
+		
 		ServicoRepository servicoRepository = new ServicoRepository();
+		ProfissionalRepository profissionalRepository = new ProfissionalRepository();
 		
 		// pegar o profissional da sessao
-		Profissional profissional = new Profissional();
+		Long idProfissional = (Long) sessao.getAttribute("idUsuario");
 		
-		List<Tarefa> tarefas = new ArrayList<Tarefa>();
+		// pega o profissional
+		Profissional profissional = profissionalRepository.buscar(idProfissional);
 		
 
 		String descricao = request.getParameter("descricao");
@@ -65,7 +72,6 @@ public class CadastrarServicoServlet extends HttpServlet {
 		servico.setPreco(preco);
 		servico.setProfissional(profissional);
 		servico.setStatusDisponibilizado(statusDisponibilizado);
-		servico.setTarefas(tarefas);
 		servico.setTitulo(titulo);
 		
 		servicoRepository.inserir(servico);

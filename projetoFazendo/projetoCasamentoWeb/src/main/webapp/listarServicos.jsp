@@ -42,6 +42,12 @@
 			
 			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 	        	<thead>
+	        	<button type="button"
+					onclick="window.location.href = 'adicionarServico.jsp'"
+					class="btn btn-success btn-sm">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					Cadastrar Servico
+				</button>
 		            <br/>
 		            <br/>
 		            <tr>
