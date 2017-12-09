@@ -7,7 +7,7 @@
     
      
     HttpSession sessao = request.getSession();
-    String estaAtivo = (String) session.getAttribute("isActive");
+    String estaAtivo = (String) sessao.getAttribute("isActive");
 
     if (estaAtivo == "verdadeiro"){ // Se o usuário estiver logado
         // Redireciona para a página principal interna 

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cadastrar Casamento</title>
+<title>Cadastrar Profissional</title>
 
 <!-- Bootstrap's styles -->
 <link rel="stylesheet"
@@ -22,67 +22,34 @@
 	<c:import url="/templates/navbar.jsp" />
 
 	<div class="container">
-		<h2 class="text-center">Cadastre seu casamento!</h2>
-
-		<form action="CadastrarCasamentoServlet" method="post">
-
-			<fieldset>
-			<legend>Dados do casamento</legend>
-<!-- 				<div class="form-group col-sm-12">
-					<label>Orçamento desejado:</label> <input type="number"
-						class="form-control" name="orcamentoTotal" />
-				</div> -->
-				<div class="form-group col-sm-12">
-					<label>Nome do casamento:</label> <input type="text"
-						class="form-control" name="nomeCasamento" />
-				</div>
-			</fieldset>
-			
+		<h2 class="text-center">Cadastre-se como profissional!</h2>
+		<h4 class="text-center">Seja bem-vindo e bom trabalho!</h4>
+		
+		<form action="CadastrarProfissionalServlet" method="post">
 			
 			<fieldset>
-				<legend>Dados do noivo</legend>
+				<legend>Dados do profissional</legend>
 
 				<div class="form-group col-sm-12">
 					<label>Nome:</label> <input type="text" class="form-control"
-						name="nomeNoivo" />
+						name="nomeProfissional" />
 				</div>
 				<div class="form-group col-sm-12">
 					<label>Email:</label> <input type="email" class="form-control"
-						name="emailNoivo" />
+						name="emailProfissional" />
 				</div>
 				<div class="form-group col-sm-12">
 					<label>Login:</label> <input type="text" class="form-control"
-						name="loginNoivo" />
+						name="loginProfissional" />
 				</div>
 				<div class="form-group col-sm-12">
 					<label>Senha:</label> <input type="password" class="form-control"
-						name="senhaNoivo" />
-				</div>
-			</fieldset>
-
-			<fieldset>
-				<legend>Dados da noiva</legend>
-
-				<div class="form-group col-sm-12">
-					<label>Nome:</label> <input type="text" class="form-control"
-						name="nomeNoiva" />
-				</div>
-				<div class="form-group col-sm-12">
-					<label>Email:</label> <input type="email" class="form-control"
-						name="emailNoiva" />
-				</div>
-				<div class="form-group col-sm-12">
-					<label>Login:</label> <input type="text" class="form-control"
-						name="loginNoiva" />
-				</div>
-				<div class="form-group col-sm-12">
-					<label>Senha:</label> <input type="password" class="form-control"
-						name="senhaNoiva" />
+						name="senhaProfissional" />
 				</div>
 			</fieldset>
 
 			<div class="form-group col-sm-12">
-				<button type="submit" class="btn btn-success">Enviar</button>
+				<button type="submit" class="btn btn-success">Cadastrar</button>
 			</div>
 		</form>
 	</div>

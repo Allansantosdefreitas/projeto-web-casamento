@@ -45,13 +45,20 @@ public class CadastrarServicoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		ServicoRepository servicoRepository = new ServicoRepository();
+		
+		// pegar o profissional da sessao
+		Profissional profissional = new Profissional();
+		
+		List<Tarefa> tarefas = new ArrayList<Tarefa>();
+		
 
 		String descricao = request.getParameter("descricao");
 		float preco = Float.parseFloat(request.getParameter("preco"));
-		Boolean statusDisponibilizado = Boolean.parseBoolean(request.getParameter("status"));
+		//Boolean statusDisponibilizado = Boolean.parseBoolean(request.getParameter("status"));
+		Boolean statusDisponibilizado = true;
+				
 		String titulo = request.getParameter("titulo");
-		Profissional profissional = new Profissional();
-		List<Tarefa> tarefas = new ArrayList<Tarefa>();
+		
 		
 		Servico servico = new Servico();
 		servico.setDescricao(descricao);
@@ -62,6 +69,8 @@ public class CadastrarServicoServlet extends HttpServlet {
 		servico.setTitulo(titulo);
 		
 		servicoRepository.inserir(servico);
+		
+		request.getRequestDispatcher("listarServicos.jsp").forward(request, response);
 
 	}
 

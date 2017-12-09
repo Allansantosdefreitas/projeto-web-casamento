@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>projetoCasamentoWeb</display-name>
   <welcome-file-list>
-    <welcome-file>index2.jsp</welcome-file>
+    <welcome-file>StartServlet</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -244,7 +244,6 @@
     <servlet-name>ListarTarefas</servlet-name>
     <url-pattern>/ListarTarefas</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <description></description>
     <display-name>TesteServlet</display-name>
@@ -255,7 +254,6 @@
     <servlet-name>TesteServlet</servlet-name>
     <url-pattern>/TesteServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>CadastrarCasamentoServlet</display-name>
@@ -265,5 +263,25 @@
   <servlet-mapping>
     <servlet-name>CadastrarCasamentoServlet</servlet-name>
     <url-pattern>/CadastrarCasamentoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StartServlet</display-name>
+    <servlet-name>StartServlet</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.StartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StartServlet</servlet-name>
+    <url-pattern>/StartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CadastrarConvidadoServlet</display-name>
+    <servlet-name>CadastrarConvidadoServlet</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.CadastrarConvidadoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CadastrarConvidadoServlet</servlet-name>
+    <url-pattern>/CadastrarConvidadoServlet</url-pattern>
   </servlet-mapping>
 </web-app>

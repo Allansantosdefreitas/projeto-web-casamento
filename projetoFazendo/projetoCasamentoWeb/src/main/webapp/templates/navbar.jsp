@@ -17,11 +17,24 @@
 			<li class="nav-item active"><a class="nav-link"
 				href="index2.jsp">Home <span class="sr-only">(current)</span></a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="cadastrarCasamento.jsp">Casamento</a></li>
-			<c:if test="not empty pageContext.request.userPrincipal">
-				<li class="nav-item"><a class="nav-link"
-					href="listarTarefas.jsp">Tarefas</a></li>
-			</c:if>
+				href="cadastrarCasamento.jsp">Casamento</a>
+			</li>
+		<%
+			if(sessao.getAttribute("isActive").equals("verdadeiro")){
+			
+		%>
+		
+			<li class="nav-item"><a class="nav-link"
+				href="listarTarefas.jsp">Tarefas</a>
+			</li>
+			<li class="nav-item"><a class="nav-link"
+				href="listarServicos.jsp">Serviços</a>
+			</li>
+			
+			<%
+			}
+		 	%>
+			
 		</ul>
 		<%
 			if(sessao.getAttribute("isActive").equals("verdadeiro")){
@@ -54,3 +67,6 @@
 			}
 	%>
 </nav>
+
+<br />
+<br />

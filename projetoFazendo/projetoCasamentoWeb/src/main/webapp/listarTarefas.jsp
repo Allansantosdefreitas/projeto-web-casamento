@@ -7,7 +7,6 @@
 <%@page import="javax.persistence.Query"%>
 <%@page import="javax.persistence.EntityManager"%>
 	
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -93,7 +92,7 @@
 								</form>
 								<form action="DeletarTarefaServlet" method="POST">
 									<input type="hidden" value="${tarefa.idTarefa}"
-										name="idDespesa">
+										name="idTarefa">
 									<button type="submit" class="btn btn-default btn-sm">
 										<a href="#"><font color="blue"> <span
 												class="glyphicon glyphicon-trash" aria-hidden="true"></span></font>

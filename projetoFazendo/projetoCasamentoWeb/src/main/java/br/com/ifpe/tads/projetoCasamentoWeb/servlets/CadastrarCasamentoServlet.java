@@ -55,18 +55,18 @@ public class CadastrarCasamentoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		double orcamentoTotal = Double.valueOf(request.getParameter("orcamentoTotal"));
+//		double orcamentoTotal = Double.valueOf(request.getParameter("orcamentoTotal"));
 		
 		//Instanciando o casamento
 		Casamento casamento = new Casamento();
 		casamento.setNome( request.getParameter("nomeCasamento"));
 		
-		Despesa despesa = new Despesa();
-		despesa.setDespesaPrevista(orcamentoTotal);
-		despesa.setDespesaAtual(0.0);
-		//despesa.setCasamento(casamento);
-		
-		casamento.setDespesa(despesa);
+//		Despesa despesa = new Despesa();
+//		despesa.setDespesaPrevista(orcamentoTotal);
+//		despesa.setDespesaAtual(0.0);
+//		//despesa.setCasamento(casamento);
+//		
+	//	casamento.setDespesa(despesa);
 		
 		//Instantciando o noivo e a noiva
 		Conjuge noivo = new Conjuge();

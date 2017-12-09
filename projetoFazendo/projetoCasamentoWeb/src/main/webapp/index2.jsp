@@ -1,4 +1,3 @@
-
 <%@include file="includes/sessaoPaginaExterna.jsp" %> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -29,9 +28,6 @@
 			            </li>
 			            <li class="nav-item">
 			            	<a class="nav-link" href="cadastrarCasamento.jsp">Casamento</a>
-			            </li>
-			            <li class="nav-item">
-			            	<a class="nav-link" href="listarTarefas.jsp">Tarefas</a>
 			            </li>
 		          	</ul>
 		          	<form class="form-inline mt-2 mt-md-0">

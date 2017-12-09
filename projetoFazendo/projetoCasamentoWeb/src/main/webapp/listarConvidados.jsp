@@ -1,7 +1,6 @@
-<%@include file="includes/sessaoPaginaInterna.jsp" %> 
-<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.repository.ServicoRepository"%>
-<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Servico"%>
+<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa"%>
 <%@page import="java.util.List"%>
+<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.StatusTarefa"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,24 +8,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-
-//	HttpSession sessao = request.getSession();
-
-	//List<Tarefa> listaTarefas = (List<Tarefa>) sessao.getAttribute("listaTarefas");
+	HttpSession sessao = request.getSession();
+	List<Tarefa> listaTarefas = (List<Tarefa>) sessao.getAttribute("listaTarefas");
 	
-	//request.setAttribute("listaTarefas", listaTarefas);
-	
-	ServicoRepository servicoRepository = new ServicoRepository();
-	
-	List<Servico> listaServicos = servicoRepository.listar();
-	
-	request.setAttribute("listaServicos", listaServicos);
-	
+	request.setAttribute("listaTarefas", listaTarefas);
 %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Listar Serviços</title>
+		<title>Listar Convidados</title>
 		
 		<!-- Bootstrap's styles -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -38,32 +28,44 @@
 		<c:import url="/templates/navbar.jsp"/>
 		
 		<div class="container">
-			<h2>Serviços disponíveis </h2>
+			<h2>Listar Convidados do seu casamento</h2>
 			
 			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 	        	<thead>
+		            <button type="button" onclick="window.location.href = 'adicionarTarefas.jsp'" class="btn btn-outline-primary btn-sm">
+		                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Cadastrar Tarefa
+		            </button>
 		            <br/>
 		            <br/>
 		            <tr>
 		                <th>Título</th>
 		                <th>Descrição</th>
-		                <th>Preço</th>
+		                <th>Data</th>
+		                <th>Status</th>
 		                <th>Opções</th>
 		            </tr>
 	            </thead>
 		        <tbody>
-		            <c:forEach items="${listaServicos}" var="servico">
+		            <c:forEach items="${listaTarefas}" var="tarefa">
 		                <tr class="odd gradeX">
-		                    <td> <c:out value="${servico.titulo}"/></td>
-		                    <td> <c:out value="${servico.descricao}"/></td>
-		                    <td> <c:out value="${servico.preco}"/></td>
-		                   
+		                    <td> <c:out value="${tarefa.titulo}"/></td>
+		                    <td> <c:out value="${tarefa.descricao}"/></td>
+		                    <td> <c:out value="${tarefa.data}"/></td>
+		                    <td> <c:out value="${tarefa.status}"/></td>
 		                    <td align="center"><font color="blue">
-		                        <form action="ContratarServicoServlet" method="POST">
-		                            <input type="hidden" value="${servico.idServico}" name="idServico">
+		                        <form action="EditarTarefaServlet" method="POST">
+		                            <input type="hidden" value="${tarefa.idTarefa}" name="idDespesa">
 		                            <button type="submit" class="btn btn-default btn-sm">
 		                                <a href="#"><font color="blue">
-		                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></font>Contratar 
+		                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></font> Editar 
+		                                </a>
+		                            </button>
+		                        </form>
+		                        <form action="DeletarTarefaServlet" method="POST">
+		                            <input type="hidden" value="${tarefa.idTarefa}" name="idDespesa">
+		                            <button type="submit" class="btn btn-default btn-sm">
+		                                <a href="#"><font color="blue"> 
+		                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></font> Excluir 
 		                                </a>
 		                            </button>
 		                        </form>
