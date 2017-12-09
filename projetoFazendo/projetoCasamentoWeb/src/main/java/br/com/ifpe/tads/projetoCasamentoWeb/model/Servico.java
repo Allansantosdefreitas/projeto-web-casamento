@@ -29,7 +29,7 @@ public class Servico implements Serializable {
     private Boolean statusDisponibilizado;
 
     //bi-directional many-to-one association to Profissional
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ID_profissional", referencedColumnName = "idUsuarioProfissional")
     private Profissional profissional;
 

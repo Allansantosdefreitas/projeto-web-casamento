@@ -10,17 +10,23 @@
 
 <%
 
-//	HttpSession sessao = request.getSession();
-
-	//List<Tarefa> listaTarefas = (List<Tarefa>) sessao.getAttribute("listaTarefas");
-	
-	//request.setAttribute("listaTarefas", listaTarefas);
-	
 	ServicoRepository servicoRepository = new ServicoRepository();
+
+	String tipoUsuario = (String) sessao.getAttribute("tipoUsuario");
 	
-	List<Servico> listaServicos = servicoRepository.listar();
-	
-	request.setAttribute("listaServicos", listaServicos);
+	if (tipoUsuario.equals( "profissional") ){
+		// pega o id do profissional
+		Long idProfissional = (Long) sessao.getAttribute("idUsuario");
+		// seta a lista com os serviços desse tal profissional
+		List<Servico> listaServicos = servicoRepository.listarServicosPorProfissional(idProfissional);
+		request.setAttribute("listaServicos", listaServicos);
+	}
+	/* Para conjuge e convidado */
+	else{
+		
+		List<Servico> listaServicos = servicoRepository.listar();
+		request.setAttribute("listaServicos", listaServicos);
+	}
 	
 %>
 <html>

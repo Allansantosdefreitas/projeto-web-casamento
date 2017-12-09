@@ -20,7 +20,7 @@ public class Profissional extends Usuario implements Serializable {
         
 	//bi-directional many-to-one association to Servico
 	@OneToMany(mappedBy="profissional", fetch = FetchType.LAZY, 
-                cascade = CascadeType.ALL, orphanRemoval = true)
+                 orphanRemoval = true)
 	private List<Servico> servicos;
 
 	public Profissional() {

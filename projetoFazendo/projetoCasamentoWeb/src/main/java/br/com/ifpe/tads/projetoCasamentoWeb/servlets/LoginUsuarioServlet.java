@@ -118,9 +118,7 @@ public class LoginUsuarioServlet extends HttpServlet {
 						sessao.setAttribute("tipoUsuario", "profissional");
 						tipoUsuario = "profissional";
 						
-						// sessao.setAttribute("usuario", usuario);
-						sessao.setAttribute("iDusuario", usuario.getIdUsuario());
-
+						
 						// Atribui o conjuge na sessão
 						// sessao.setAttribute("conjuge", conjuge);
 						//
