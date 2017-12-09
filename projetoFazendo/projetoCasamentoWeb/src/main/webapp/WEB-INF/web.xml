@@ -284,4 +284,14 @@
     <servlet-name>CadastrarConvidadoServlet</servlet-name>
     <url-pattern>/CadastrarConvidadoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginUsuarioServlet</display-name>
+    <servlet-name>LoginUsuarioServlet</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.LoginUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginUsuarioServlet</servlet-name>
+    <url-pattern>/LoginUsuarioServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -59,7 +59,7 @@
 			<thead>
 				<button type="button"
 					onclick="window.location.href = 'adicionarTarefas.jsp'"
-					class="btn btn-outline-primary btn-sm">
+					class="btn btn-success btn-sm">
 					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					Cadastrar Tarefa
 				</button>
