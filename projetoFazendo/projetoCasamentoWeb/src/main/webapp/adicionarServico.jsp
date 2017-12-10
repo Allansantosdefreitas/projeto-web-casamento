@@ -44,7 +44,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label>Preço: </label>
+					<label>Preço (R$): </label>
 					<input class="form-control" type="number" name="preco"/>
 				</div>
 				

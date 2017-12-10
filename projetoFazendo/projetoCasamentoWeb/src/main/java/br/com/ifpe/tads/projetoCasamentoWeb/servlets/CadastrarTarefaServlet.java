@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -68,11 +69,13 @@ public class CadastrarTarefaServlet extends HttpServlet {
 
 		//Pega os valores do formulário
 		String descricao = request.getParameter("descricao");
-		String status = request.getParameter("status");
+		String status = request.getParameter("statusSelectionado");
 		
 		String titulo = request.getParameter("titulo");
 		
 		String dataString = request.getParameter("data");
+		
+		Date data = new Date(dataString);
 		
 		// Formatando a data :(
 
@@ -119,23 +122,24 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		
 		//Verifica qual o status escolhido pelo usuário
 
-//		for(StatusTarefa statusTarefa : StatusTarefa.values()){
-//			
-//			//Apenas para testes
-//			System.out.println(statusTarefa.name());
-//			
-//			//Atribui o valor do status ao status da nova tarefa
-//			if((statusTarefa.name()).equals(status)) {
-//				tarefa.setStatus(statusTarefa);
-//			}
-//		}
+		for(StatusTarefa statusTarefa : StatusTarefa.values()){
+			
+			//Apenas para testes
+			System.out.println(statusTarefa.name());
+			
+			//Atribui o valor do status ao status da nova tarefa
+			if((statusTarefa.name()).equals(status)) {
+				tarefa.setStatus(statusTarefa);
+			}
+		}
 		
 		//Atribuindo os valores da tarefa
 		tarefa.setCasamento(casamento);
-		tarefa.setData(Date.from(Instant.now()));
+		tarefa.setData( Date.from(Instant.now()) );
 		tarefa.setDescricao(descricao);
 //		tarefa.setServico(servico);
 		tarefa.setTitulo(titulo);
+		
 		
 		//Salva a tarefa
 		tarefaRepository.inserir(tarefa);

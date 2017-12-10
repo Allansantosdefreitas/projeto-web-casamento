@@ -76,6 +76,8 @@ public class LoginUsuarioServlet extends HttpServlet {
 
 					resultado = "sucesso";
 					
+					sessao.setAttribute("usuario", usuario);
+
 					// se for conjuge
 					if (usuario.getDiscUsuario().equals("CONJ")) {
 

@@ -1,4 +1,4 @@
-
+<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Usuario"%>
 <%
 	HttpSession sessao = request.getSession();
 	//String nomeDoConjuge = (String) sessao.getAttribute("conjugeNome");
@@ -16,9 +16,24 @@
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item active"><a class="nav-link"
 				href="index2.jsp">Home <span class="sr-only">(current)</span></a></li>
+			
+			<%
+				if (sessao.getAttribute("isActive").equals("falso")) {
+			%>
+			
 			<li class="nav-item"><a class="nav-link"
 				href="cadastrarCasamento.jsp">Casamento</a></li>
+			
+			<ul>
+			<li class="nav-item"><a class="nav-link"
+				href="cadastrarProfissional.jsp">Profissionais</a>
+				</li>
+				
+			<li class="nav-item"><a class="nav-link"
+				href="cadastrarConvidado.jsp">Convidados</a></li>
+			
 			<%
+			}
 				if (sessao.getAttribute("isActive").equals("verdadeiro")) {
 			%>
 
@@ -34,6 +49,25 @@
 		</ul>
 		<%
 			if (sessao.getAttribute("isActive").equals("verdadeiro")) {
+			
+			
+			String tipoUsuario = (String) sessao.getAttribute("tipoUsuario");
+			String tipoUsuarioSessao;
+			
+			if(tipoUsuario.equals("conjuge")){
+					
+					tipoUsuarioSessao = "Cônjuge";
+			
+			}else if(tipoUsuario.equals("convidado")){
+				tipoUsuarioSessao = "Convidado";
+			
+			}else if(tipoUsuario.equals("profissional")){
+					tipoUsuarioSessao = "Profissional";
+			
+			}
+			
+			Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+					
 		%>
 
 <!--  		<div class="dropdown">
@@ -61,10 +95,10 @@
  <li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="http://example.com"
 				id="navbarDropdownMenuLink" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">Usuário</a>
+				aria-haspopup="true" aria-expanded="false">${usuario.getNome() }</a>
 				
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="dadosUsuario.jsp">Conjuge</a> 
+					<a class="dropdown-item" href="dadosUsuario.jsp">${tipoUsuario}</a> 
 					 <div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="LogoutServlet">Sair</a> 
 				</div>

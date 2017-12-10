@@ -68,7 +68,7 @@
 		                <tr class="odd gradeX">
 		                    <td> <c:out value="${servico.titulo}"/></td>
 		                    <td> <c:out value="${servico.descricao}"/></td>
-		                    <td> <c:out value="${servico.preco}"/></td>
+		                    <td> R$ <c:out value="${servico.preco}"/></td>
 		                   
 		                    <td align="center"><font color="blue">
 		                        <form action="ContratarServicoServlet" method="POST">

@@ -78,7 +78,13 @@
 					<tr class="odd gradeX">
 						<td><c:out value="${tarefa.titulo}" /></td>
 						<td><c:out value="${tarefa.descricao}" /></td>
-						<td><c:out value="${tarefa.data}" /></td>
+						
+						<fmt:formatDate value="${tarefa.data}" pattern="dd/MM/YYY" var="dataFormatada" />
+						<td><c:out value="${dataFormatada}" /></td>
+						
+						<!--  <td><c:out value="${tarefa.data}" /></td>-->
+						<!-- <td><p><fmt:formatDate pattern = "dd-MM-YYYY" value = "${tarefa.data}" /></p></td>  -->
+						
 						<td><c:out value="${tarefa.status}" /></td>
 						<td align="center"><font color="blue">
 								<form action="EditarTarefaServlet" method="POST">

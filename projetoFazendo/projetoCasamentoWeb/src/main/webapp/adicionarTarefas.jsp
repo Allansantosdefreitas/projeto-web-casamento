@@ -1,17 +1,18 @@
 <%@include file="includes/sessaoPaginaInterna.jsp" %> 
 <%@page import="java.util.List"%>
 <%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.StatusTarefa"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	List<StatusTarefa> listaStatus = new ArrayList<StatusTarefa>();
-	/*listaStatus.addAll(StatusTarefa.valores());
-	por enquanto
-	*/	
+	//List<StatusTarefa> listaStatus = new ArrayList<StatusTarefa>();
+	//listaStatus.add(StatusTarefa.CONCLUIDA);
+	
+	List<StatusTarefa> listaStatus = Arrays.asList(StatusTarefa.values());
+	
 	request.setAttribute("listaStatus", listaStatus);
 %>
 <html>
