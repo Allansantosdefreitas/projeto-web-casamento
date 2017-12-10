@@ -81,8 +81,7 @@ public class CasamentoTest {
         casamentoRepository.atualizar(casamento);
         
         assertNotNull(casamento);
-        
-        
+            
     }
 
 //
