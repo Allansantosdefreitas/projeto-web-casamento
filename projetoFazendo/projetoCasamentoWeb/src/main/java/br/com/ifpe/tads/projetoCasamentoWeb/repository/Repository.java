@@ -41,11 +41,37 @@ public abstract class Repository<Entidade> {
 	}
 
 	public void atualizar(Entidade entidade) {
-		em.merge(entidade);
+		EntityTransaction et = em.getTransaction();
+		try {
+			et.begin();
+	
+			em.merge(entidade);
+			
+			et.commit();
+		} catch (Exception ex) {
+			System.out.println("Deu erro na atualização");
+            if (et != null && et.isActive()) {
+                et.rollback();
+            }
+		}
+		
 	}
 
 	public void deletar(Entidade entidade) {
-		em.remove(em.merge(entidade));
+		EntityTransaction et = em.getTransaction();
+		try {
+			et.begin();
+	
+			em.remove(em.merge(entidade));
+			
+			et.commit();
+		} catch (Exception ex) {
+			System.out.println("Deu erro na exclusão");
+            if (et != null && et.isActive()) {
+                et.rollback();
+            }
+		}
+		
 	}
 
 	public Entidade buscar(Long idEntidade) {
