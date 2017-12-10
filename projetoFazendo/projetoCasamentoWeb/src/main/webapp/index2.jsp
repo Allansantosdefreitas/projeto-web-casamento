@@ -29,6 +29,12 @@
 			            <li class="nav-item">
 			            	<a class="nav-link" href="cadastrarCasamento.jsp">Casamento</a>
 			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link" href="cadastrarProfissional.jsp">Profissional</a>
+			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link" href="cadastrarConvidado.jsp">Convidado</a>
+			            </li>
 		          	</ul>
 		          	<form class="form-inline mt-2 mt-md-0">
 		            	<a class="btn btn-primary my-2 my-sm-0" href="login.jsp">Login</a>

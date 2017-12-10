@@ -1,0 +1,27 @@
+LOGIN/LOGOUT (OK)
+TAREFA (CR)
+	
+	EDITAR E EXCLUIR
+	pegar data do request.getParameter [DEPOIS]
+SERVIÇO (CR)
+	
+CONJUGE(C)
+PROFISSIONAL (C)
+CONVIDADO (C)
+	
+---------------------------
+CONTRATAR SERVICO
+ORÇAMENTO (PREÇO PREVISTO X PREÇO ATUAL)
+	usar queries?
+
+CONVIDADO
+	cadastra-se com um codigo recebido
+	insere o código
+	o sistema encontra o convite associado ao codigo, 
+	logo após, o casamento associado a esse convite
+	e, por fim, cadastra o convidado na lista de convidados 
+	desse casamento.
+	
+
+TESTES CRUD OK OK
+	
