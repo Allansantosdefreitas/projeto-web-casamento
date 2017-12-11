@@ -1,4 +1,4 @@
-<%@include file="includes/sessaoPaginaExterna.jsp" %>
+<%@include file="includes/sessaoPaginaExterna.jsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
@@ -17,10 +17,40 @@
 </head>
 
 <body>
+	<header> <nav
+		class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-	<!-- NavBar -->
-	<c:import url="/templates/navbar.jsp" />
+	<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+		<a class="navbar-brand" href="index2.jsp">WeddingWeb</a>
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item "><a class="nav-link"
+				href="index2.jsp">Home <span class="sr-only">(current)</span></a></li>
 
+
+			<li class="nav-item active"><a class="nav-link"
+				href="cadastrarCasamento.jsp">Casamento</a></li>
+
+			<li class="nav-item"><a class="nav-link"
+				href="cadastrarProfissional.jsp">Profissional</a></li>
+
+			<li class="nav-item"><a class="nav-link"
+				href="cadastrarConvidado.jsp">Convidado</a></li>
+
+
+		</ul>
+
+		<a class="btn btn-primary my-2 my-sm-0" href="login.jsp">Login</a>
+
+	</div>
+	</nav> 
+	
+	<br />
+	<br />
 	<div class="container">
 		<h2 class="text-center">Cadastre seu casamento!</h2>
 

@@ -75,7 +75,7 @@ public class CadastrarTarefaServlet extends HttpServlet {
 		
 		String dataString = request.getParameter("data");
 		
-		Date data = new Date(dataString);
+	//	Date data = new Date(dataString);
 		
 		// Formatando a data :(
 

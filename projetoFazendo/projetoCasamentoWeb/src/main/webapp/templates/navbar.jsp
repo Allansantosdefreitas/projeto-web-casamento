@@ -35,6 +35,13 @@
 			<%
 			}
 				if (sessao.getAttribute("isActive").equals("verdadeiro")) {
+			
+					
+						if (sessao.getAttribute("tipoUsuario").equals("conjuge")) {
+			
+			
+				
+				
 			%>
 
 			<li class="nav-item"><a class="nav-link"
@@ -42,10 +49,23 @@
 			<li class="nav-item"><a class="nav-link"
 				href="listarServicos.jsp">Serviços</a></li>
 
-			<%
-				}
-			%>
+					<%
+						}else if (sessao.getAttribute("tipoUsuario").equals("profissional")) {
+					%>
+						<li class="nav-item"><a class="nav-link"
+									href="listarServicos.jsp">Serviços</a></li>
 
+					<%}else { // SE for convidado...
+					 
+					 %>
+					<%
+					} 
+					%>
+			<%
+			} 
+			%>
+			
+		
 		</ul>
 		<%
 			if (sessao.getAttribute("isActive").equals("verdadeiro")) {
@@ -70,39 +90,20 @@
 					
 		%>
 
-<!--  		<div class="dropdown">
-			<button class="btn btn-default dropdown-toggle" type="button"
+<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button"
 				id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="true">
 				Usuário <span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">Dados do usuário</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#">Sair</a></li>
-			</ul>
-		</div>-->
-
-		<!--  <a class="btn btn-primary my-2 my-sm-0" href="login.jsp">ATIVO</a>
-				
-				<!--
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-				  Usuário
-				  <li role="separator" class="divider"></li>
-				  EXIT
-				</ul>-->
-
- <li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="http://example.com"
-				id="navbarDropdownMenuLink" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">${usuario.getNome() }</a>
-				
-				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="dadosUsuario.jsp">${tipoUsuario}</a> 
 					 <div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="LogoutServlet">Sair</a> 
 				</div>
-			</li>
+				
+			</div>
 
 
 		<%
@@ -110,9 +111,6 @@
 		%>
 
 		<a class="btn btn-primary my-2 my-sm-0" href="login.jsp">Login</a>
-
-
-
 
 		<%
 			}

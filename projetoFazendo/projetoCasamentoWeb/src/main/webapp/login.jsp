@@ -25,7 +25,7 @@
 	        	</button>
 		        <div class="collapse navbar-collapse" id="navbarCollapse">
 		        	<ul class="navbar-nav mr-auto">
-			            <li class="nav-item active">
+			            <li class="nav-item">
 			            	<a class="nav-link" href="index2.jsp">Home <span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
@@ -43,9 +43,9 @@
 	    </header>
 		
 		<div class="container">
-
+<br/><br/>
 		    <form class="form-signin" method="post" action="LoginUsuarioServlet">
-		    
+		    	
 			    <h2 class="form-signin-heading">Realize o seu login</h2>
 			    
 			    <label for="inputEmail" class="sr-only">Login</label>
@@ -54,22 +54,11 @@
 			    <label for="inputPassword" class="sr-only">Senha</label>
 			    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
 			    
-			<!--     <div class="checkbox">
-				    <label>
-				    	<input type="checkbox" value="remember-me"> Lembrar-me
-				    </label>
-			    </div> -->
 			    
 			    <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
 		    </form>
 		    
-		    <hr class="featurette-divider">
-    	</div> <!-- /container -->
-		
-	    <!-- FOOTER -->
-	    <footer class="container">
-	    	<p>&copy; 2017 Jonathan Romualdo & Allan Santos <!--<a href="#">Privacy</a> &middot; <a href="#">Terms</a>--></p>
-	    </footer>
+		      	</div> <!-- /container -->
 	    
 		<!-- Bootstrap's scripts -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

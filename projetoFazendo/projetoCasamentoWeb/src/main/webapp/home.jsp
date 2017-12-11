@@ -1,16 +1,11 @@
-
 <%
-	/* Verificando se a sessï¿½o estï¿½ ativa (Manda pra dentro ou nï¿½o?)--------------
-	    Se estiver ativa joga pra a pï¿½gina principal. Senï¿½o fica onde estï¿½.
-	Nota: O usuï¿½rio logado nï¿½o pode ficar na pï¿½gina de cadastro, por exemplo. 
-	Pra cadastrar um usuï¿½rio ï¿½ necessï¿½rio estar deslogado, como ocorre com o Facebook, 
-	por exemplo. */
 
+/* Manda para a página conforme o tipo de usuário */
 	HttpSession sessao = request.getSession();
 	String estaAtivo = (String) sessao.getAttribute("isActive");
 
-	if (estaAtivo == "verdadeiro") { // Se o usuÃ¡rio estiver logado
-		// Redireciona para a pÃ¡gina principal interna 
+	if (estaAtivo == "verdadeiro") { // Se o usuário estiver logado
+		// Redireciona para a página principal interna 
 
 		if (sessao.getAttribute("tipoUsuario").equals("conjuge")) {
 
@@ -31,6 +26,10 @@
 
 		}
 
+	}else{ /*Sessão não está ativa */
+			RequestDispatcher view = request.getRequestDispatcher("index2.jsp");
+
+			view.forward(request, response);
+				
 	}
 %>
-
