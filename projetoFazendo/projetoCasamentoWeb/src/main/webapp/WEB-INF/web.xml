@@ -4,6 +4,14 @@
   <welcome-file-list>
     <welcome-file>StartServlet</welcome-file>
   </welcome-file-list>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/PaginaErro</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/PaginaErro</location>
+  </error-page>
   <servlet>
     <description></description>
     <display-name>LogoutServlet</display-name>
@@ -333,5 +341,25 @@
   <servlet-mapping>
     <servlet-name>ContratarServicoServlet</servlet-name>
     <url-pattern>/ContratarServicoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PaginaErrro</display-name>
+    <servlet-name>PaginaErrro</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.PaginaErrro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaginaErrro</servlet-name>
+    <url-pattern>/PaginaErrro</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PaginaErro</display-name>
+    <servlet-name>PaginaErro</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.PaginaErro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaginaErro</servlet-name>
+    <url-pattern>/PaginaErro</url-pattern>
   </servlet-mapping>
 </web-app>

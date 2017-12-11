@@ -64,7 +64,11 @@ public class EditarUsuarioServlet extends HttpServlet {
 
 		usuarioRepository.atualizar(usuario);
 
-		request.getRequestDispatcher("listarTarefas.jsp").forward(request, response);
+		sessao.removeAttribute("usuario");
+		sessao.setAttribute("usuario", usuario);
+		
+		
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 
 	}
 

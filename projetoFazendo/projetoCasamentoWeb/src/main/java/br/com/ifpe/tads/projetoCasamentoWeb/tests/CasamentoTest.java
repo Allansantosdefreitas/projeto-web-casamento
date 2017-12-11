@@ -17,10 +17,7 @@ import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CasamentoTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+
 	
 
     private Casamento casamento = new Casamento();
@@ -62,6 +59,21 @@ public class CasamentoTest {
         
         assertNotNull(casamento);
     }
+    
+    
+    @Test
+    public void a_inserirCasamentoInvalidoEM() {
+    	CasamentoRepository casamentoRepository = new CasamentoRepository();
+    	
+        casamento = preencherCasamentoInvalido();
+        
+        casamentoRepository.inserir(casamento);
+        
+        //casamentoGlobal = casamento;
+        
+        assertNull(casamento);
+    }
+
 
     /* Tem que ajeitar aqui..falta pegar o id da última entidade inserida para
         atualizar e não criar uma nova entidade */
@@ -112,6 +124,15 @@ public class CasamentoTest {
         // Preenchendo attrs
         Casamento casamento = new Casamento();
         casamento.setNome("Marriage of OUR Dreams");
+
+        return casamento;
+    }
+    
+    private static Casamento preencherCasamentoInvalido() {
+
+        // Preenchendo attrs
+        Casamento casamento = new Casamento();
+        casamento.setNome(null);
 
         return casamento;
     }

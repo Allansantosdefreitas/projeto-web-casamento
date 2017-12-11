@@ -2,6 +2,9 @@ package br.com.ifpe.tads.projetoCasamentoWeb.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.List;
 
 @Entity
@@ -13,6 +16,7 @@ public class Casamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCasamento;
 
+    @NotBlank	
     private String nome;
 
     //bi-directional many-to-one association to Tarefa
