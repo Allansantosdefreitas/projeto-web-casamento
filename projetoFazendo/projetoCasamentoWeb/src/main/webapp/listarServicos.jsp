@@ -46,6 +46,8 @@
 		<div class="container">
 			<h2>Serviços disponíveis </h2>
 			
+			<br/>
+			<br/>
 			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 	        	<thead>
 	        	<button type="button"
@@ -70,6 +72,10 @@
 		                    <td> <c:out value="${servico.descricao}"/></td>
 		                    <td> R$ <c:out value="${servico.preco}"/></td>
 		                   
+		                   <%
+		                   	if (sessao.getAttribute("tipoUsuario").equals("conjuge")) {
+		                   
+		                    %>
 		                    <td align="center"><font color="blue">
 		                        <form action="ContratarServicoServlet" method="POST">
 		                            <input type="hidden" value="${servico.idServico}" name="idServico">
@@ -80,6 +86,33 @@
 		                            </button>
 		                        </form>
 		                    </td>
+		                    <%
+		                    }else { /* Se for profissional */
+		                    
+		                    %>
+		                     <td align="center"><font color="blue">
+								<form action="BuscarServicoServlet" method="POST">
+									<input type="hidden" value="${servico.idServico}"
+										name="idServico">
+									<button type="submit" class="btn btn-default btn-sm">
+										<font color="black"> <span
+												class="glyphicon glyphicon-pencil" aria-hidden="true"></span></font>
+											Editar </a>
+									</button>
+								</form>
+								<form action="DeletarServicoServlet" method="POST">
+									<input type="hidden" value="${servico.idServico}"
+										name="idServico">
+									<button type="submit" class="btn btn-danger btn-sm">
+										<font color="white"> <span
+												class="glyphicon glyphicon-trash" aria-hidden="true"></span></font>
+											Excluir </a>
+									</button>
+								</form></td>
+		                    
+		                    <%
+		                    }
+		                    %>
 		                </tr>
 		            </c:forEach>
 		        </tbody>

@@ -2,6 +2,7 @@ package br.com.ifpe.tads.projetoCasamentoWeb.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,10 +41,15 @@ public class DeletarServicoServlet extends HttpServlet {
 
 		ServicoRepository servicoRepository = new ServicoRepository();
 		
-		Long idServico = Long.valueOf( ((String) request.getParameter("idServico") ));
+		Long idServico = Long.valueOf( (String) request.getParameter("idServico") );
 		Servico servico = servicoRepository.buscar(idServico);
 
 		servicoRepository.deletar(servico);
+		
+		RequestDispatcher view = request.getRequestDispatcher("listarServicos.jsp");
+
+		view.forward(request, response);
+
 	}
 
 }

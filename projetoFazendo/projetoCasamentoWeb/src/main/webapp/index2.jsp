@@ -7,6 +7,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Bem-vindo ao WeddingWeb!</title>
 		
+		<link rel="icon" href="../images/ring2.png">
+		<!-- 
+		<link rel="shortcut icon" type="image/png" href="../images/ring2.png" />
+		 -->
 		<!-- Bootstrap's styles -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 		

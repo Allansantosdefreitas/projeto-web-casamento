@@ -4,6 +4,7 @@
 	//String nomeDoConjuge = (String) sessao.getAttribute("conjugeNome");
 	int dilma = 13;
 %>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
@@ -94,7 +95,7 @@
 			<button class="btn btn-primary dropdown-toggle" type="button"
 				id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="true">
-				Usuário <span class="caret"></span>
+				${usuario.getNome()} <span class="caret"></span>
 			</button>
 	
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

@@ -294,4 +294,14 @@
     <servlet-name>LoginUsuarioServlet</servlet-name>
     <url-pattern>/LoginUsuarioServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BuscarServicoServlet</display-name>
+    <servlet-name>BuscarServicoServlet</servlet-name>
+    <servlet-class>br.com.ifpe.tads.projetoCasamentoWeb.servlets.BuscarServicoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuscarServicoServlet</servlet-name>
+    <url-pattern>/BuscarServicoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
