@@ -52,7 +52,8 @@
 
 	<div class="container">
 		<h2>Listar Tarefas para o casamento</h2>
-
+		<br/>
+		<br/>
 		<table width="100%"
 			class="table table-striped table-bordered table-hover"
 			id="dataTables-example">
@@ -86,12 +87,13 @@
 						<!-- <td><p><fmt:formatDate pattern = "dd-MM-YYYY" value = "${tarefa.data}" /></p></td>  -->
 						
 						<td><c:out value="${tarefa.status}" /></td>
+						
 						<td align="center"><font color="blue">
-								<form action="EditarTarefaServlet" method="POST">
+								<form action="BuscarTarefaServlet" method="POST">
 									<input type="hidden" value="${tarefa.idTarefa}"
-										name="idDespesa">
+										name="idTarefa">
 									<button type="submit" class="btn btn-default btn-sm">
-										<a href="#"><font color="blue"> <span
+										<font color="blue"> <span
 												class="glyphicon glyphicon-pencil" aria-hidden="true"></span></font>
 											Editar </a>
 									</button>
@@ -99,8 +101,8 @@
 								<form action="DeletarTarefaServlet" method="POST">
 									<input type="hidden" value="${tarefa.idTarefa}"
 										name="idTarefa">
-									<button type="submit" class="btn btn-default btn-sm">
-										<a href="#"><font color="blue"> <span
+									<button type="submit" class="btn btn-danger btn-sm">
+										<font color="blue"> <span
 												class="glyphicon glyphicon-trash" aria-hidden="true"></span></font>
 											Excluir </a>
 									</button>

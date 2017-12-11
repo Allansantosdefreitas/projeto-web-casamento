@@ -57,6 +57,7 @@
 					<button class="btn btn-success" type="submit">Salvar</button>
 					<button class="btn btn-default" type="reset">Limpar</button>
 					<a href="listarServicos.jsp" class="btn btn-default" role="button">Voltar</a>
+				</div>
 			
 			</form>	
 		</div>

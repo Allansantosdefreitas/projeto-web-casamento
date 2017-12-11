@@ -44,7 +44,7 @@ public class DeletarServicoServlet extends HttpServlet {
 		Long idServico = Long.valueOf( (String) request.getParameter("idServico") );
 		Servico servico = servicoRepository.buscar(idServico);
 
-		servicoRepository.deletar(servico);
+		servicoRepository.deletar(servico);	
 		
 		RequestDispatcher view = request.getRequestDispatcher("listarServicos.jsp");
 

@@ -7,20 +7,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import br.com.ifpe.tads.projetoCasamentoWeb.model.Tarefa;
-import br.com.ifpe.tads.projetoCasamentoWeb.repository.TarefaRepository;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class DeletarTarefaServlet
+ * Servlet implementation class BuscarTarefaServlet
  */
-public class DeletarTarefaServlet extends HttpServlet {
+public class BuscarTarefaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public DeletarTarefaServlet() {
+    public BuscarTarefaServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -36,19 +35,18 @@ public class DeletarTarefaServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		TarefaRepository tarefaRepository = new TarefaRepository();
-		
+		// TODO Auto-generated method stub
+		//doGet(request, response);
+
+		HttpSession sessao = request.getSession();
 		Long idTarefa = Long.valueOf( (String) request.getParameter("idTarefa")  );
 		
-		Tarefa tarefa = tarefaRepository.buscar(idTarefa);
-		tarefaRepository.deletar(tarefa);
-
-		RequestDispatcher view = request.getRequestDispatcher("listarTarefas.jsp");
+		sessao.setAttribute("idTarefa", idTarefa);
+		
+		RequestDispatcher view = request.getRequestDispatcher("editarTarefa.jsp");
 
 		view.forward(request, response);
 
-	
 	}
 
 }

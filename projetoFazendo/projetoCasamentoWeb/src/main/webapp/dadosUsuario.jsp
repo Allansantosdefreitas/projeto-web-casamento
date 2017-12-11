@@ -1,3 +1,6 @@
+<%@page
+	import="br.com.ifpe.tads.projetoCasamentoWeb.repository.UsuarioRepository"%>
+<%@page import="br.com.ifpe.tads.projetoCasamentoWeb.model.Usuario"%>
 <%@include file="includes/sessaoPaginaInterna.jsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -19,23 +22,26 @@
 <%
 	String tipoUsuarioSessao = (String) sessao.getAttribute("tipoUsuario");
 	String tipoUsuario;
-	
-	if(tipoUsuarioSessao.equals("conjuge")){
-			
-			tipoUsuario = "Cônjuge";
-	
-	}else if(tipoUsuarioSessao.equals("convidado")){
+
+	if (tipoUsuarioSessao.equals("conjuge")) {
+
+		tipoUsuario = "Cônjuge";
+
+	} else if (tipoUsuarioSessao.equals("convidado")) {
 		tipoUsuario = "Convidado";
-	
-	}else if(tipoUsuarioSessao.equals("profissional")){
-			tipoUsuario = "Profissional";
-	
+
+	} else if (tipoUsuarioSessao.equals("profissional")) {
+		tipoUsuario = "Profissional";
+
 	}
 
+	UsuarioRepository usuarioRepository = new UsuarioRepository();
 
+	// Pega o id do usuário
+	Long idUsuario = (Long) sessao.getAttribute("idUsuario");
 
-
- %>
+	Usuario usuario = usuarioRepository.buscar(idUsuario);
+%>
 <body>
 
 	<!-- NavBar -->
@@ -43,32 +49,32 @@
 
 	<div class="container">
 
-		<form action="CadastrarCasamentoServlet" method="post">
+		<form action="EditarUsuarioServlet" method="post">
 
 			<fieldset>
 				<legend>Dados do ${tipoUsuario}</legend>
 
 				<div class="form-group col-sm-12">
 					<label>Nome:</label> <input type="text" class="form-control"
-						name="nomeNoivo" />
+						name="nome" value="<%=usuario.getNome()%>" />
 				</div>
 				<div class="form-group col-sm-12">
 					<label>Email:</label> <input type="email" class="form-control"
-						name="emailNoivo" />
+						name="email" value="<%=usuario.getEmail()%>" />
 				</div>
 				<div class="form-group col-sm-12">
 					<label>Login:</label> <input type="text" class="form-control"
-						name="loginNoivo" />
+						name="login" value="<%=usuario.getLogin()%>" />
 				</div>
-<!-- 				<div class="form-group col-sm-12">
-					<label>Senha:</label> <input type="password" class="form-control"
-						name="senhaNoivo" />
-				</div> -->
 			</fieldset>
 
 			<div class="form-group col-sm-12">
-				<button type="submit" class="btn btn-danger">Editar</button>
+				<button class="btn btn-success" type="submit">Salvar</button>
+				<button class="btn btn-default" type="reset">Limpar</button>
+				<a href="home.jsp" class="btn btn-default" role="button">Voltar</a>
 			</div>
+
+
 		</form>
 	</div>
 
