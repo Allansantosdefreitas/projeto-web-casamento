@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Casamento;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Convidado;
+import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.ConvidadoRepository;
 
 /**
@@ -43,9 +44,13 @@ public class CadastrarConvidadoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	
-
+		CasamentoRepository casamentoRepository = new CasamentoRepository();
+		/* Por enquanto..depois deve pegar o id do casamento que enviou o convite ou o código associado ao casamento */
+		Long idCasamento = 4L; 
+		
 		// provisório..deve pegar o casamento que enviou o convite
-		Casamento casamento = new Casamento();
+		Casamento casamento = casamentoRepository.buscar(idCasamento);
+		
 		List<Convidado> listaConvidados = new ArrayList<Convidado>();
 		
 		ConvidadoRepository convidadoRepository = new ConvidadoRepository();
