@@ -166,6 +166,8 @@ public class LoginUsuarioServlet extends HttpServlet {
 				else if ( tipoUsuario.equals("profissional") ) {
 					
 					view = request.getRequestDispatcher("listarServicos.jsp");
+				}else {
+					view = request.getRequestDispatcher("responderConvite.jsp");
 				}
 
 			} else {

@@ -20,7 +20,7 @@
 
 		} else { // SE for convidado
 			
-			RequestDispatcher view = request.getRequestDispatcher("paginaConvidado.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("responderConvite.jsp");
 
 			view.forward(request, response);
 

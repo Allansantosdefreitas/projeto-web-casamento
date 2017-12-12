@@ -49,6 +49,8 @@
 				href="listarTarefas.jsp">Tarefas</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="listarServicos.jsp">Serviços</a></li>
+					<li class="nav-item"><a class="nav-link"
+				href="listarConvidados.jsp">Convidados</a></li>
 
 					<%
 						}else if (sessao.getAttribute("tipoUsuario").equals("profissional")) {
@@ -59,6 +61,8 @@
 					<%}else { // SE for convidado...
 					 
 					 %>
+					 <li class="nav-item"><a class="nav-link"
+				href="responderConvite.jsp">Convite</a></li>
 					<%
 					} 
 					%>

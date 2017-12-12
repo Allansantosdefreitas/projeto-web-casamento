@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Casamento;
 import br.com.ifpe.tads.projetoCasamentoWeb.model.Convidado;
+import br.com.ifpe.tads.projetoCasamentoWeb.model.StatusConvidado;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.CasamentoRepository;
 import br.com.ifpe.tads.projetoCasamentoWeb.repository.ConvidadoRepository;
 
@@ -65,10 +66,15 @@ public class CadastrarConvidadoServlet extends HttpServlet {
 		convidado.setEmail(emailConvidado);
 		convidado.setLogin(loginConvidado);
 		convidado.setSenha(senhaConvidado);
-	
+		convidado.setCasamento(casamento);
+		// pendente por padrão
+		convidado.setStatusConvidado(StatusConvidado.PENDENTE);
+		
+		
 		//coloca na lista
 		listaConvidados.add(convidado);	
 		casamento.setConvidados(listaConvidados);
+		
 		
 		convidadoRepository.inserir(convidado);
 		
